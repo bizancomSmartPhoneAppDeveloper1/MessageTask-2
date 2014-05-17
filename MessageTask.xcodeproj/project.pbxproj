@@ -8,6 +8,92 @@
 
 /* Begin PBXBuildFile section */
 		18A193CE1926F912000A7124 /* ReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A193CD1926F912000A7124 /* ReminderViewController.m */; };
+		18A193FE1926FBF9000A7124 /* 2914.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D01926FBF9000A7124 /* 2914.png */; };
+		18A193FF1926FBF9000A7124 /* 2914.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D01926FBF9000A7124 /* 2914.png */; };
+		18A194001926FBF9000A7124 /* 3042.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D11926FBF9000A7124 /* 3042.png */; };
+		18A194011926FBF9000A7124 /* 3042.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D11926FBF9000A7124 /* 3042.png */; };
+		18A194021926FBF9000A7124 /* s00229.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D21926FBF9000A7124 /* s00229.png */; };
+		18A194031926FBF9000A7124 /* s00229.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D21926FBF9000A7124 /* s00229.png */; };
+		18A194041926FBF9000A7124 /* suma8.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D31926FBF9000A7124 /* suma8.png */; };
+		18A194051926FBF9000A7124 /* suma8.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D31926FBF9000A7124 /* suma8.png */; };
+		18A194061926FBF9000A7124 /* suma8かり.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D41926FBF9000A7124 /* suma8かり.png */; };
+		18A194071926FBF9000A7124 /* suma8かり.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D41926FBF9000A7124 /* suma8かり.png */; };
+		18A194081926FBF9000A7124 /* adverties-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D61926FBF9000A7124 /* adverties-button.png */; };
+		18A194091926FBF9000A7124 /* adverties-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D61926FBF9000A7124 /* adverties-button.png */; };
+		18A1940A1926FBF9000A7124 /* browes-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D71926FBF9000A7124 /* browes-button.png */; };
+		18A1940B1926FBF9000A7124 /* browes-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D71926FBF9000A7124 /* browes-button.png */; };
+		18A1940C1926FBF9000A7124 /* browes-button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D81926FBF9000A7124 /* browes-button1.png */; };
+		18A1940D1926FBF9000A7124 /* browes-button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D81926FBF9000A7124 /* browes-button1.png */; };
+		18A1940E1926FBF9000A7124 /* haikei-all.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D91926FBF9000A7124 /* haikei-all.png */; };
+		18A1940F1926FBF9000A7124 /* haikei-all.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D91926FBF9000A7124 /* haikei-all.png */; };
+		18A194101926FBF9000A7124 /* kousin-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DA1926FBF9000A7124 /* kousin-button.png */; };
+		18A194111926FBF9000A7124 /* kousin-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DA1926FBF9000A7124 /* kousin-button.png */; };
+		18A194121926FBF9000A7124 /* massge-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DB1926FBF9000A7124 /* massge-button.png */; };
+		18A194131926FBF9000A7124 /* massge-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DB1926FBF9000A7124 /* massge-button.png */; };
+		18A194141926FBF9000A7124 /* name-ran.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DC1926FBF9000A7124 /* name-ran.png */; };
+		18A194151926FBF9000A7124 /* name-ran.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DC1926FBF9000A7124 /* name-ran.png */; };
+		18A194161926FBF9000A7124 /* sousin-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DD1926FBF9000A7124 /* sousin-button.png */; };
+		18A194171926FBF9000A7124 /* sousin-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DD1926FBF9000A7124 /* sousin-button.png */; };
+		18A194181926FBF9000A7124 /* tsmain.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DE1926FBF9000A7124 /* tsmain.png */; };
+		18A194191926FBF9000A7124 /* tsmain.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193DE1926FBF9000A7124 /* tsmain.png */; };
+		18A1941A1926FBF9000A7124 /* actions_dialog-ok-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */; };
+		18A1941B1926FBF9000A7124 /* actions_dialog-ok-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */; };
+		18A1941C1926FBF9000A7124 /* actions_dialog-ok-5_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E11926FBF9000A7124 /* actions_dialog-ok-5_256x256.png */; };
+		18A1941D1926FBF9000A7124 /* actions_dialog-ok-5_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E11926FBF9000A7124 /* actions_dialog-ok-5_256x256.png */; };
+		18A1941E1926FBF9000A7124 /* actions_dialog-ok_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E21926FBF9000A7124 /* actions_dialog-ok_256x256.png */; };
+		18A1941F1926FBF9000A7124 /* actions_dialog-ok_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E21926FBF9000A7124 /* actions_dialog-ok_256x256.png */; };
+		18A194201926FBF9000A7124 /* actions_document-properties_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E31926FBF9000A7124 /* actions_document-properties_256x256.png */; };
+		18A194211926FBF9000A7124 /* actions_document-properties_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E31926FBF9000A7124 /* actions_document-properties_256x256.png */; };
+		18A194221926FBF9000A7124 /* actions_document-send_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E41926FBF9000A7124 /* actions_document-send_256x256.png */; };
+		18A194231926FBF9000A7124 /* actions_document-send_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E41926FBF9000A7124 /* actions_document-send_256x256.png */; };
+		18A194241926FBF9000A7124 /* actions_help-about-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E51926FBF9000A7124 /* actions_help-about-2_256x256.png */; };
+		18A194251926FBF9000A7124 /* actions_help-about-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E51926FBF9000A7124 /* actions_help-about-2_256x256.png */; };
+		18A194261926FBF9000A7124 /* actions_irkick_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E61926FBF9000A7124 /* actions_irkick_256x256.png */; };
+		18A194271926FBF9000A7124 /* actions_irkick_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E61926FBF9000A7124 /* actions_irkick_256x256.png */; };
+		18A194281926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E71926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png */; };
+		18A194291926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E71926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png */; };
+		18A1942A1926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E81926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png */; };
+		18A1942B1926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E81926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png */; };
+		18A1942C1926FBF9000A7124 /* actions_services_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E91926FBF9000A7124 /* actions_services_256x256.png */; };
+		18A1942D1926FBF9000A7124 /* actions_services_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193E91926FBF9000A7124 /* actions_services_256x256.png */; };
+		18A1942E1926FBF9000A7124 /* actions_svn-commit_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EA1926FBF9000A7124 /* actions_svn-commit_256x256.png */; };
+		18A1942F1926FBF9000A7124 /* actions_svn-commit_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EA1926FBF9000A7124 /* actions_svn-commit_256x256.png */; };
+		18A194301926FBF9000A7124 /* actions_system-reboot-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EB1926FBF9000A7124 /* actions_system-reboot-2_256x256.png */; };
+		18A194311926FBF9000A7124 /* actions_system-reboot-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EB1926FBF9000A7124 /* actions_system-reboot-2_256x256.png */; };
+		18A194321926FBF9000A7124 /* actions_view-refresh-3_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EC1926FBF9000A7124 /* actions_view-refresh-3_256x256.png */; };
+		18A194331926FBF9000A7124 /* actions_view-refresh-3_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EC1926FBF9000A7124 /* actions_view-refresh-3_256x256.png */; };
+		18A194341926FBF9000A7124 /* actions_view-refresh-4_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193ED1926FBF9000A7124 /* actions_view-refresh-4_256x256.png */; };
+		18A194351926FBF9000A7124 /* actions_view-refresh-4_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193ED1926FBF9000A7124 /* actions_view-refresh-4_256x256.png */; };
+		18A194361926FBF9000A7124 /* actions_view-refresh-5_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EE1926FBF9000A7124 /* actions_view-refresh-5_256x256.png */; };
+		18A194371926FBF9000A7124 /* actions_view-refresh-5_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EE1926FBF9000A7124 /* actions_view-refresh-5_256x256.png */; };
+		18A194381926FBF9000A7124 /* apps_abiword-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EF1926FBF9000A7124 /* apps_abiword-2_256x256.png */; };
+		18A194391926FBF9000A7124 /* apps_abiword-2_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193EF1926FBF9000A7124 /* apps_abiword-2_256x256.png */; };
+		18A1943A1926FBF9000A7124 /* apps_bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F01926FBF9000A7124 /* apps_bluetooth_256x256.png */; };
+		18A1943B1926FBF9000A7124 /* apps_bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F01926FBF9000A7124 /* apps_bluetooth_256x256.png */; };
+		18A1943C1926FBF9000A7124 /* apps_kbtobexclient_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F11926FBF9000A7124 /* apps_kbtobexclient_256x256.png */; };
+		18A1943D1926FBF9000A7124 /* apps_kbtobexclient_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F11926FBF9000A7124 /* apps_kbtobexclient_256x256.png */; };
+		18A1943E1926FBF9000A7124 /* apps_kde-bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F21926FBF9000A7124 /* apps_kde-bluetooth_256x256.png */; };
+		18A1943F1926FBF9000A7124 /* apps_kde-bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F21926FBF9000A7124 /* apps_kde-bluetooth_256x256.png */; };
+		18A194401926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F31926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png */; };
+		18A194411926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F31926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png */; };
+		18A194421926FBF9000A7124 /* C00225-002N.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F41926FBF9000A7124 /* C00225-002N.jpg */; };
+		18A194431926FBF9000A7124 /* C00225-002N.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F41926FBF9000A7124 /* C00225-002N.jpg */; };
+		18A194441926FBF9000A7124 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F61926FBF9000A7124 /* black.png */; };
+		18A194451926FBF9000A7124 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F61926FBF9000A7124 /* black.png */; };
+		18A194461926FBF9000A7124 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F71926FBF9000A7124 /* blue.png */; };
+		18A194471926FBF9000A7124 /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F71926FBF9000A7124 /* blue.png */; };
+		18A194481926FBF9000A7124 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F81926FBF9000A7124 /* green.png */; };
+		18A194491926FBF9000A7124 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F81926FBF9000A7124 /* green.png */; };
+		18A1944A1926FBF9000A7124 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F91926FBF9000A7124 /* purple.png */; };
+		18A1944B1926FBF9000A7124 /* purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193F91926FBF9000A7124 /* purple.png */; };
+		18A1944C1926FBF9000A7124 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FA1926FBF9000A7124 /* red.png */; };
+		18A1944D1926FBF9000A7124 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FA1926FBF9000A7124 /* red.png */; };
+		18A1944E1926FBF9000A7124 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FB1926FBF9000A7124 /* sample.jpg */; };
+		18A1944F1926FBF9000A7124 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FB1926FBF9000A7124 /* sample.jpg */; };
+		18A194501926FBF9000A7124 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FC1926FBF9000A7124 /* white.png */; };
+		18A194511926FBF9000A7124 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FC1926FBF9000A7124 /* white.png */; };
+		18A194521926FBF9000A7124 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FD1926FBF9000A7124 /* yellow.png */; };
+		18A194531926FBF9000A7124 /* yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193FD1926FBF9000A7124 /* yellow.png */; };
 		DD01BDFA191B1D9100761848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDF9191B1D9100761848 /* Foundation.framework */; };
 		DD01BDFC191B1D9100761848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDFB191B1D9100761848 /* CoreGraphics.framework */; };
 		DD01BDFE191B1D9100761848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDFD191B1D9100761848 /* UIKit.framework */; };
@@ -38,6 +124,49 @@
 /* Begin PBXFileReference section */
 		18A193CC1926F912000A7124 /* ReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderViewController.h; sourceTree = "<group>"; };
 		18A193CD1926F912000A7124 /* ReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderViewController.m; sourceTree = "<group>"; };
+		18A193D01926FBF9000A7124 /* 2914.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2914.png; sourceTree = "<group>"; };
+		18A193D11926FBF9000A7124 /* 3042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3042.png; sourceTree = "<group>"; };
+		18A193D21926FBF9000A7124 /* s00229.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s00229.png; sourceTree = "<group>"; };
+		18A193D31926FBF9000A7124 /* suma8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = suma8.png; sourceTree = "<group>"; };
+		18A193D41926FBF9000A7124 /* suma8かり.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "suma8かり.png"; sourceTree = "<group>"; };
+		18A193D61926FBF9000A7124 /* adverties-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adverties-button.png"; sourceTree = "<group>"; };
+		18A193D71926FBF9000A7124 /* browes-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "browes-button.png"; sourceTree = "<group>"; };
+		18A193D81926FBF9000A7124 /* browes-button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "browes-button1.png"; sourceTree = "<group>"; };
+		18A193D91926FBF9000A7124 /* haikei-all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "haikei-all.png"; sourceTree = "<group>"; };
+		18A193DA1926FBF9000A7124 /* kousin-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kousin-button.png"; sourceTree = "<group>"; };
+		18A193DB1926FBF9000A7124 /* massge-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "massge-button.png"; sourceTree = "<group>"; };
+		18A193DC1926FBF9000A7124 /* name-ran.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name-ran.png"; sourceTree = "<group>"; };
+		18A193DD1926FBF9000A7124 /* sousin-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sousin-button.png"; sourceTree = "<group>"; };
+		18A193DE1926FBF9000A7124 /* tsmain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tsmain.png; sourceTree = "<group>"; };
+		18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_dialog-ok-2_256x256.png"; sourceTree = "<group>"; };
+		18A193E11926FBF9000A7124 /* actions_dialog-ok-5_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_dialog-ok-5_256x256.png"; sourceTree = "<group>"; };
+		18A193E21926FBF9000A7124 /* actions_dialog-ok_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_dialog-ok_256x256.png"; sourceTree = "<group>"; };
+		18A193E31926FBF9000A7124 /* actions_document-properties_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_document-properties_256x256.png"; sourceTree = "<group>"; };
+		18A193E41926FBF9000A7124 /* actions_document-send_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_document-send_256x256.png"; sourceTree = "<group>"; };
+		18A193E51926FBF9000A7124 /* actions_help-about-2_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_help-about-2_256x256.png"; sourceTree = "<group>"; };
+		18A193E61926FBF9000A7124 /* actions_irkick_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actions_irkick_256x256.png; sourceTree = "<group>"; };
+		18A193E71926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_object-flip-horizontal-2_256x256_90.png"; sourceTree = "<group>"; };
+		18A193E81926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_object-rotate-right-3_48x48.png"; sourceTree = "<group>"; };
+		18A193E91926FBF9000A7124 /* actions_services_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actions_services_256x256.png; sourceTree = "<group>"; };
+		18A193EA1926FBF9000A7124 /* actions_svn-commit_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_svn-commit_256x256.png"; sourceTree = "<group>"; };
+		18A193EB1926FBF9000A7124 /* actions_system-reboot-2_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_system-reboot-2_256x256.png"; sourceTree = "<group>"; };
+		18A193EC1926FBF9000A7124 /* actions_view-refresh-3_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_view-refresh-3_256x256.png"; sourceTree = "<group>"; };
+		18A193ED1926FBF9000A7124 /* actions_view-refresh-4_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_view-refresh-4_256x256.png"; sourceTree = "<group>"; };
+		18A193EE1926FBF9000A7124 /* actions_view-refresh-5_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "actions_view-refresh-5_256x256.png"; sourceTree = "<group>"; };
+		18A193EF1926FBF9000A7124 /* apps_abiword-2_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apps_abiword-2_256x256.png"; sourceTree = "<group>"; };
+		18A193F01926FBF9000A7124 /* apps_bluetooth_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apps_bluetooth_256x256.png; sourceTree = "<group>"; };
+		18A193F11926FBF9000A7124 /* apps_kbtobexclient_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apps_kbtobexclient_256x256.png; sourceTree = "<group>"; };
+		18A193F21926FBF9000A7124 /* apps_kde-bluetooth_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apps_kde-bluetooth_256x256.png"; sourceTree = "<group>"; };
+		18A193F31926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apps_preferences-system-bluetooth_256x256.png"; sourceTree = "<group>"; };
+		18A193F41926FBF9000A7124 /* C00225-002N.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "C00225-002N.jpg"; sourceTree = "<group>"; };
+		18A193F61926FBF9000A7124 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
+		18A193F71926FBF9000A7124 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		18A193F81926FBF9000A7124 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green.png; sourceTree = "<group>"; };
+		18A193F91926FBF9000A7124 /* purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple.png; sourceTree = "<group>"; };
+		18A193FA1926FBF9000A7124 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		18A193FB1926FBF9000A7124 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		18A193FC1926FBF9000A7124 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
+		18A193FD1926FBF9000A7124 /* yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow.png; sourceTree = "<group>"; };
 		DD01BDF6191B1D9100761848 /* MessageTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD01BDF9191B1D9100761848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD01BDFB191B1D9100761848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +214,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */ = {
+			isa = PBXGroup;
+			children = (
+				18A193D01926FBF9000A7124 /* 2914.png */,
+				18A193D11926FBF9000A7124 /* 3042.png */,
+				18A193D21926FBF9000A7124 /* s00229.png */,
+				18A193D31926FBF9000A7124 /* suma8.png */,
+				18A193D41926FBF9000A7124 /* suma8かり.png */,
+				18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */,
+				18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */,
+			);
+			path = "スマートフォンアイコン詰め";
+			sourceTree = "<group>";
+		};
+		18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */ = {
+			isa = PBXGroup;
+			children = (
+				18A193D61926FBF9000A7124 /* adverties-button.png */,
+				18A193D71926FBF9000A7124 /* browes-button.png */,
+				18A193D81926FBF9000A7124 /* browes-button1.png */,
+				18A193D91926FBF9000A7124 /* haikei-all.png */,
+				18A193DA1926FBF9000A7124 /* kousin-button.png */,
+				18A193DB1926FBF9000A7124 /* massge-button.png */,
+				18A193DC1926FBF9000A7124 /* name-ran.png */,
+				18A193DD1926FBF9000A7124 /* sousin-button.png */,
+				18A193DE1926FBF9000A7124 /* tsmain.png */,
+			);
+			path = "Taskshotデザインまとめ";
+			sourceTree = "<group>";
+		};
+		18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */ = {
+			isa = PBXGroup;
+			children = (
+				18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */,
+				18A193E11926FBF9000A7124 /* actions_dialog-ok-5_256x256.png */,
+				18A193E21926FBF9000A7124 /* actions_dialog-ok_256x256.png */,
+				18A193E31926FBF9000A7124 /* actions_document-properties_256x256.png */,
+				18A193E41926FBF9000A7124 /* actions_document-send_256x256.png */,
+				18A193E51926FBF9000A7124 /* actions_help-about-2_256x256.png */,
+				18A193E61926FBF9000A7124 /* actions_irkick_256x256.png */,
+				18A193E71926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png */,
+				18A193E81926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png */,
+				18A193E91926FBF9000A7124 /* actions_services_256x256.png */,
+				18A193EA1926FBF9000A7124 /* actions_svn-commit_256x256.png */,
+				18A193EB1926FBF9000A7124 /* actions_system-reboot-2_256x256.png */,
+				18A193EC1926FBF9000A7124 /* actions_view-refresh-3_256x256.png */,
+				18A193ED1926FBF9000A7124 /* actions_view-refresh-4_256x256.png */,
+				18A193EE1926FBF9000A7124 /* actions_view-refresh-5_256x256.png */,
+				18A193EF1926FBF9000A7124 /* apps_abiword-2_256x256.png */,
+				18A193F01926FBF9000A7124 /* apps_bluetooth_256x256.png */,
+				18A193F11926FBF9000A7124 /* apps_kbtobexclient_256x256.png */,
+				18A193F21926FBF9000A7124 /* apps_kde-bluetooth_256x256.png */,
+				18A193F31926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png */,
+				18A193F41926FBF9000A7124 /* C00225-002N.jpg */,
+				18A193F51926FBF9000A7124 /* earth_icon */,
+			);
+			path = "きれいなアイコンその他";
+			sourceTree = "<group>";
+		};
+		18A193F51926FBF9000A7124 /* earth_icon */ = {
+			isa = PBXGroup;
+			children = (
+				18A193F61926FBF9000A7124 /* black.png */,
+				18A193F71926FBF9000A7124 /* blue.png */,
+				18A193F81926FBF9000A7124 /* green.png */,
+				18A193F91926FBF9000A7124 /* purple.png */,
+				18A193FA1926FBF9000A7124 /* red.png */,
+				18A193FB1926FBF9000A7124 /* sample.jpg */,
+				18A193FC1926FBF9000A7124 /* white.png */,
+				18A193FD1926FBF9000A7124 /* yellow.png */,
+			);
+			path = earth_icon;
+			sourceTree = "<group>";
+		};
 		DD01BDED191B1D9000761848 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +330,7 @@
 				18A193CC1926F912000A7124 /* ReminderViewController.h */,
 				18A193CD1926F912000A7124 /* ReminderViewController.m */,
 				DD01BE11191B1D9100761848 /* Images.xcassets */,
+				18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */,
 				DD01BE00191B1D9100761848 /* Supporting Files */,
 			);
 			path = MessageTask;
@@ -240,9 +444,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A1944C1926FBF9000A7124 /* red.png in Resources */,
+				18A1940C1926FBF9000A7124 /* browes-button1.png in Resources */,
+				18A1942C1926FBF9000A7124 /* actions_services_256x256.png in Resources */,
+				18A194521926FBF9000A7124 /* yellow.png in Resources */,
 				DD01BE12191B1D9100761848 /* Images.xcassets in Resources */,
+				18A194061926FBF9000A7124 /* suma8かり.png in Resources */,
+				18A1943E1926FBF9000A7124 /* apps_kde-bluetooth_256x256.png in Resources */,
 				DD01BE04191B1D9100761848 /* InfoPlist.strings in Resources */,
+				18A194321926FBF9000A7124 /* actions_view-refresh-3_256x256.png in Resources */,
+				18A194301926FBF9000A7124 /* actions_system-reboot-2_256x256.png in Resources */,
+				18A194401926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png in Resources */,
+				18A194141926FBF9000A7124 /* name-ran.png in Resources */,
+				18A194221926FBF9000A7124 /* actions_document-send_256x256.png in Resources */,
+				18A194461926FBF9000A7124 /* blue.png in Resources */,
+				18A194081926FBF9000A7124 /* adverties-button.png in Resources */,
+				18A1942A1926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png in Resources */,
+				18A194361926FBF9000A7124 /* actions_view-refresh-5_256x256.png in Resources */,
+				18A194121926FBF9000A7124 /* massge-button.png in Resources */,
+				18A194481926FBF9000A7124 /* green.png in Resources */,
+				18A194341926FBF9000A7124 /* actions_view-refresh-4_256x256.png in Resources */,
+				18A194041926FBF9000A7124 /* suma8.png in Resources */,
+				18A194501926FBF9000A7124 /* white.png in Resources */,
+				18A1943C1926FBF9000A7124 /* apps_kbtobexclient_256x256.png in Resources */,
+				18A1940E1926FBF9000A7124 /* haikei-all.png in Resources */,
+				18A1941A1926FBF9000A7124 /* actions_dialog-ok-2_256x256.png in Resources */,
+				18A1944E1926FBF9000A7124 /* sample.jpg in Resources */,
+				18A194261926FBF9000A7124 /* actions_irkick_256x256.png in Resources */,
+				18A1944A1926FBF9000A7124 /* purple.png in Resources */,
+				18A194281926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png in Resources */,
+				18A1942E1926FBF9000A7124 /* actions_svn-commit_256x256.png in Resources */,
+				18A194001926FBF9000A7124 /* 3042.png in Resources */,
+				18A194101926FBF9000A7124 /* kousin-button.png in Resources */,
+				18A194201926FBF9000A7124 /* actions_document-properties_256x256.png in Resources */,
+				18A194441926FBF9000A7124 /* black.png in Resources */,
+				18A1943A1926FBF9000A7124 /* apps_bluetooth_256x256.png in Resources */,
+				18A194381926FBF9000A7124 /* apps_abiword-2_256x256.png in Resources */,
+				18A1941E1926FBF9000A7124 /* actions_dialog-ok_256x256.png in Resources */,
 				DD41609B191B407500BDF779 /* Main.storyboard in Resources */,
+				18A1940A1926FBF9000A7124 /* browes-button.png in Resources */,
+				18A194421926FBF9000A7124 /* C00225-002N.jpg in Resources */,
+				18A193FE1926FBF9000A7124 /* 2914.png in Resources */,
+				18A194241926FBF9000A7124 /* actions_help-about-2_256x256.png in Resources */,
+				18A1941C1926FBF9000A7124 /* actions_dialog-ok-5_256x256.png in Resources */,
+				18A194161926FBF9000A7124 /* sousin-button.png in Resources */,
+				18A194181926FBF9000A7124 /* tsmain.png in Resources */,
+				18A194021926FBF9000A7124 /* s00229.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +497,50 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A1941D1926FBF9000A7124 /* actions_dialog-ok-5_256x256.png in Resources */,
+				18A194391926FBF9000A7124 /* apps_abiword-2_256x256.png in Resources */,
+				18A1942F1926FBF9000A7124 /* actions_svn-commit_256x256.png in Resources */,
+				18A194231926FBF9000A7124 /* actions_document-send_256x256.png in Resources */,
+				18A194311926FBF9000A7124 /* actions_system-reboot-2_256x256.png in Resources */,
+				18A194171926FBF9000A7124 /* sousin-button.png in Resources */,
+				18A1943F1926FBF9000A7124 /* apps_kde-bluetooth_256x256.png in Resources */,
+				18A194011926FBF9000A7124 /* 3042.png in Resources */,
+				18A1943B1926FBF9000A7124 /* apps_bluetooth_256x256.png in Resources */,
+				18A194531926FBF9000A7124 /* yellow.png in Resources */,
+				18A194491926FBF9000A7124 /* green.png in Resources */,
+				18A194111926FBF9000A7124 /* kousin-button.png in Resources */,
+				18A194091926FBF9000A7124 /* adverties-button.png in Resources */,
+				18A194211926FBF9000A7124 /* actions_document-properties_256x256.png in Resources */,
+				18A194271926FBF9000A7124 /* actions_irkick_256x256.png in Resources */,
+				18A194151926FBF9000A7124 /* name-ran.png in Resources */,
+				18A1942D1926FBF9000A7124 /* actions_services_256x256.png in Resources */,
+				18A194511926FBF9000A7124 /* white.png in Resources */,
+				18A1944D1926FBF9000A7124 /* red.png in Resources */,
+				18A194071926FBF9000A7124 /* suma8かり.png in Resources */,
+				18A194371926FBF9000A7124 /* actions_view-refresh-5_256x256.png in Resources */,
+				18A1944F1926FBF9000A7124 /* sample.jpg in Resources */,
+				18A194351926FBF9000A7124 /* actions_view-refresh-4_256x256.png in Resources */,
+				18A194331926FBF9000A7124 /* actions_view-refresh-3_256x256.png in Resources */,
+				18A194031926FBF9000A7124 /* s00229.png in Resources */,
+				18A194251926FBF9000A7124 /* actions_help-about-2_256x256.png in Resources */,
+				18A194131926FBF9000A7124 /* massge-button.png in Resources */,
+				18A1940D1926FBF9000A7124 /* browes-button1.png in Resources */,
+				18A1941B1926FBF9000A7124 /* actions_dialog-ok-2_256x256.png in Resources */,
+				18A1942B1926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png in Resources */,
+				18A194411926FBF9000A7124 /* apps_preferences-system-bluetooth_256x256.png in Resources */,
+				18A194051926FBF9000A7124 /* suma8.png in Resources */,
+				18A194431926FBF9000A7124 /* C00225-002N.jpg in Resources */,
+				18A1941F1926FBF9000A7124 /* actions_dialog-ok_256x256.png in Resources */,
 				DD01BE23191B1D9100761848 /* InfoPlist.strings in Resources */,
+				18A193FF1926FBF9000A7124 /* 2914.png in Resources */,
+				18A194471926FBF9000A7124 /* blue.png in Resources */,
+				18A1940F1926FBF9000A7124 /* haikei-all.png in Resources */,
+				18A1940B1926FBF9000A7124 /* browes-button.png in Resources */,
+				18A194191926FBF9000A7124 /* tsmain.png in Resources */,
+				18A194291926FBF9000A7124 /* actions_object-flip-horizontal-2_256x256_90.png in Resources */,
+				18A1944B1926FBF9000A7124 /* purple.png in Resources */,
+				18A194451926FBF9000A7124 /* black.png in Resources */,
+				18A1943D1926FBF9000A7124 /* apps_kbtobexclient_256x256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

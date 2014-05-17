@@ -22,7 +22,7 @@
 
 @synthesize labelMyPeerIDIPHONE;
 @synthesize labelYourPeerIDIPHONE;
-@synthesize labelYourPeerIDIPAD;
+
 
 - (BOOL)isPhone
 {
@@ -33,6 +33,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    //タイトル（tano）
+    time = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(task) userInfo:nil repeats:YES];
     
     //起動と同時にNSUUIDでuuid作成
     NSUUID *uuid = [NSUUID UUID];
@@ -46,7 +48,7 @@
     if([self isPhone]){
         labelMyPeerIDIPHONE.text = myPeerID.displayName;
     }else{
-        self.labelMyPeerIDIPAD.text = myPeerID.displayName;
+        self.labelMyPeerIDIPHONE.text = myPeerID.displayName;
     }
     //任意の NSString で serviceType を作成します
     serviceType = @"p2ptest";
@@ -63,6 +65,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)task
+{
+    self.startView.hidden = YES;
+}
+
+
 - (void)showAlert:(NSString *)title message:(NSString *)message
 {
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -91,7 +100,7 @@
     if([self isPhone]){
         labelYourPeerIDIPHONE.text = peerID.displayName;
     }else{
-        labelYourPeerIDIPAD.text = peerID.displayName;
+        labelYourPeerIDIPHONE.text = peerID.displayName;
     }
     [nearbyServiceBrowser invitePeer:peerID toSession:session withContext:[@"Welcome" dataUsingEncoding:NSUTF8StringEncoding] timeout:10];
 }
@@ -186,19 +195,8 @@
     [self startAdvertising];
 }
 
-- (IBAction)btnStartAdvertisingIPAD:(id)sender {
-    // BLog();
-   
-    [self startAdvertising];
-}
 
 - (IBAction)btnStopAdvertisingIPHONE:(id)sender {
-    // BLog();
-    
-    [nearbyServiceAdvertiser stopAdvertisingPeer];
-}
-
-- (IBAction)btnStopAdvertisingIPAD:(id)sender {
     // BLog();
     
     [nearbyServiceAdvertiser stopAdvertisingPeer];
@@ -218,15 +216,5 @@
     [nearbyServiceBrowser stopBrowsingForPeers];
 }
 
-- (IBAction)btnStartBrowsingIPAD:(id)sender {
-    // BLog();
-    
-    [nearbyServiceBrowser startBrowsingForPeers];
-}
 
-- (IBAction)btnStopBrowsingIPAD:(id)sender {
-    // BLog();
-   
-    [nearbyServiceBrowser stopBrowsingForPeers];
-}
 @end

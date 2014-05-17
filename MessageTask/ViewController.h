@@ -13,6 +13,7 @@
 {
     MCPeerID *myPeerID;
     NSString *serviceType;
+    NSTimer *time;
 }
 @property (strong, nonatomic) MCPeerID *myPeerID;
 @property (strong, nonatomic) NSString *serviceType;
@@ -20,22 +21,22 @@
 @property (strong, nonatomic) MCNearbyServiceBrowser *nearbyServiceBrowser;
 @property (strong, nonatomic) MCSession *session;
 
-@property (weak, nonatomic) IBOutlet UILabel *labelMyPeerIDIPAD;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelMyPeerIDIPHONE;
 @property (weak, nonatomic) IBOutlet UILabel *labelYourPeerIDIPHONE;
-@property (weak, nonatomic) IBOutlet UILabel *labelYourPeerIDIPAD;
+//op画面（tano）
+@property (weak, nonatomic) IBOutlet UIImageView *startView;
+
 
 
 - (IBAction)btnStartAdvertisingIPHONE:(id)sender;
-- (IBAction)btnStartAdvertisingIPAD:(id)sender;
+
 - (IBAction)btnStopAdvertisingIPHONE:(id)sender;
-- (IBAction)btnStopAdvertisingIPAD:(id)sender;
+
 
 - (IBAction)btnStartBrowsingIPHONE:(id)sender;
 - (IBAction)btnStopBrowsingIPHONE:(id)sender;
-- (IBAction)btnStartBrowsingIPAD:(id)sender;
-- (IBAction)btnStopBrowsingIPAD:(id)sender;
+
 
 
 - (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error;

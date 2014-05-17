@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
+
+
+
 
 @interface ReminderViewController : UIViewController
+@property (nonatomic,strong)EKReminder *rimainder;
+
+- (IBAction)newButton:(UIButton *)sender;
+- (IBAction)gobackButton:(UIButton *)sender;
+
+
 
 @end
+
+
