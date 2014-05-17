@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A193CE1926F912000A7124 /* ReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A193CD1926F912000A7124 /* ReminderViewController.m */; };
 		DD01BDFA191B1D9100761848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDF9191B1D9100761848 /* Foundation.framework */; };
 		DD01BDFC191B1D9100761848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDFB191B1D9100761848 /* CoreGraphics.framework */; };
 		DD01BDFE191B1D9100761848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01BDFD191B1D9100761848 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A193CC1926F912000A7124 /* ReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderViewController.h; sourceTree = "<group>"; };
+		18A193CD1926F912000A7124 /* ReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderViewController.m; sourceTree = "<group>"; };
 		DD01BDF6191B1D9100761848 /* MessageTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD01BDF9191B1D9100761848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DD01BDFB191B1D9100761848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 				DD01BE09191B1D9100761848 /* AppDelegate.m */,
 				DD01BE0E191B1D9100761848 /* ViewController.h */,
 				DD01BE0F191B1D9100761848 /* ViewController.m */,
+				18A193CC1926F912000A7124 /* ReminderViewController.h */,
+				18A193CD1926F912000A7124 /* ReminderViewController.m */,
 				DD01BE11191B1D9100761848 /* Images.xcassets */,
 				DD01BE00191B1D9100761848 /* Supporting Files */,
 			);
@@ -256,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A193CE1926F912000A7124 /* ReminderViewController.m in Sources */,
 				DD01BE10191B1D9100761848 /* ViewController.m in Sources */,
 				DD01BE0A191B1D9100761848 /* AppDelegate.m in Sources */,
 				DD01BE06191B1D9100761848 /* main.m in Sources */,
