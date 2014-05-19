@@ -63,7 +63,7 @@
     //----------------アクセス許可についてのステータスを取得する
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder];
     
-    
+    //アクセス許可を求めていない場合
     if (status ==  EKAuthorizationStatusNotDetermined)
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
@@ -72,6 +72,7 @@
                                              cancelButtonTitle:@"OK"
                                              otherButtonTitles:nil];
         [alert show];
+        [self showRemin];
     }
     //-----------------iPhone「機能制限」アクセス制限している
     else if (status == EKAuthorizationStatusRestricted)
@@ -102,7 +103,69 @@
                                              otherButtonTitles:nil];
         [alert show];
         [self somethingReminder];
+        
     }
+}
+
+-(void)showRemin
+{
+    //アクセス許可についてのステータスを取得する
+    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder];
+    
+    
+    //EKAuthorizationStatusの値に応じて処理する
+    switch (status)
+    {
+        case EKAuthorizationStatusAuthorized:       //アクセスをユーザーが許可している場合
+        {
+            
+        }
+            break;
+        case EKAuthorizationStatusNotDetermined:    //まだユーザにアクセス許可のアラートを出していない状態
+        {
+            // 「このアプリがリマインダーへのアクセスを求めています」といったアラートが表示される
+            [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
+             {
+ //                __weak id weakSelf = self;
+                 if (granted) {
+                     // ユーザーがアクセスを許可した場合
+                     //メインスレッドを止めないためにdispatch_asyncを使って処理をバックグラウンドで行う
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         // 許可されたら、EKEntityTypeReminderへのアクセスを行う
+            
+                     });
+                 } else {
+                     // ユーザーがアクセス拒否した場合
+                     // UIAlertViewの表示をメインスレッドで行う
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [[[UIAlertView alloc] initWithTitle:@"確認"
+                                                     message:@"このアプリのリマインダーへのアクセスを許可するには、プライバシーから設定する必要があります。"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil]
+                          show];
+                     });
+                 }
+             }];
+            
+        }
+            break;
+        case EKAuthorizationStatusDenied:           //アクセスをユーザーから拒否されている場合
+        case EKAuthorizationStatusRestricted:       //iPhoneの設定の「機能制限」でマインダーへのアクセスを制限している場合
+        {
+            //アラートを表示
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告"
+                                                            message:@"リマインダーへのアクセスが許可されていません。"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+            break;
+        default:
+            break;
+    }
+
 }
 
 //リマインダー操作
@@ -116,15 +179,59 @@
     NSDate *endDate   = [NSDate distantFuture];
     
     NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
+    NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
+
     
     [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
      {
+         int i = 0;
          for(EKReminder *e in reminders)
          {
              NSLog(@"title=%@", e.title);
              NSLog(@"sample=%@", e.dueDateComponents);
              
+             NSLog(@"title=%@", e.title);
+             NSLog(@"sample=%@", e.dueDateComponents);
+             //             NSLog(@"%@",e.location);
+             NSLog(@"%@",e.notes);
+             
+             NSLog(@"event: %@, %@,in %@",e.startDateComponents,e.title,e.calendar.title);
+             
+             NSString *titles = [NSString stringWithFormat:@"%@ \n",e.title];
+             NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
+             
+             
+             
+             
+             
+             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50 , 100*i, 50, 30)];//１番目
+             //UILabel *label = [[UILabel al]]
+             UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(100,100*i,200,30)];//1番目は（画面位置の横幅）,2番目は（高さ）,３番目は（）,４番目は（）
+             label.textColor = [UIColor blackColor];
+             label.font = [UIFont systemFontOfSize:12];
+             label.numberOfLines = 0;
+             label.adjustsFontSizeToFitWidth = YES;
+             
+             label2.textColor = [UIColor blackColor];
+             label2.font = [UIFont systemFontOfSize:15];
+             label2.numberOfLines = 0;
+             label2.adjustsFontSizeToFitWidth = YES;
+             
+             label.text = [NSString stringWithFormat:@"%@\n",titles];//@"%@",titles;
+             label2.text = [NSString stringWithFormat:@" \n %@\n",noto];
+             NSLog(@"noto=%@",noto);
+             
+             [self.view addSubview:label];
+             [self.view addSubview:label2];
+             [labels addObject:label];
+             i++;
          }
+         
+         EKEventViewController *datailViewController =[[EKEventViewController alloc]initWithNibName:nil bundle:nil];
+         //         datailViewController.event = [event objectAtindex:0];
+         [self.navigationController pushViewController:datailViewController animated:YES];
+         [datailViewController reloadInputViews];
+  
          
      }];
     
@@ -141,4 +248,6 @@
 {
 
 }
+
+
 @end
