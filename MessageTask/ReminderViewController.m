@@ -43,6 +43,11 @@
     
     //----------------------初期化
     event = [[EKEventStore alloc]init];
+    //セッション用データ１わく・２わく
+    data1 = @[@"ケーキ♪"];
+    data2 = @[@"チーズ"];
+ 
+
     
 }
 
@@ -62,6 +67,85 @@
  // Pass the selected object to the new view controller.
  }
  */
+//-----------------------画面の構成（リマインダーを使うにあたり）1セッション数
+
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+//行数に関わる所
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   // return 2;　↓行間にそれぞれ欲しい情報を放り込む・・・（＝＝；）たい。
+    if (section == 0)
+    {
+        return data1.count;
+    }else {
+        return data2.count;
+    }
+}
+
+//セクションにヘッダーをつける
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    //   return 0;//[NSString stringWithFormat:@"Header<%@>",_title];//エラーがでちゃう・・・意味無し「０」就任中！
+    if (section == 0)
+    {
+        return @"好きな物☆";
+    }else
+    {
+        return @"嫌いな物☆";
+    }
+}
+
+
+//1表示する,2セルの準備、3表示の文字、4セルのラベル設定
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdenttifier = @"selfCell";
+    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdenttifier];
+    if (cell == nil)
+    {
+    //    cell = [tableView dequeueReusableCellWithIdentifier:cellIdenttifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdenttifier];
+    }
+    if (indexPath.section == 0)
+    {
+        cell.textLabel.text = [data1 objectAtIndex:indexPath.row];
+        
+    }
+    else
+    {
+        cell.textLabel.text = [data2 objectAtIndex:indexPath.row];
+    }
+    
+  /*  NSString *title = [NSString stringWithFormat:@"背くションの%dの%d行",indexPath.section,indexPath.row];
+    
+        tableView.rowHeight = 50;
+        cell.textLabel.text = title;
+   */
+        return cell;
+    
+ //   [self somethingReminder];
+}
+
+
+
+//選択時行う処理
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+ //   NSLog(@"セクション%dの%d",indexPath.section,indexpath.row);
+    
+}
+
+//ステータスバー非表示
+-(BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+
 -(void)lookRemainder
 {
     //----------------アクセス許可についてのステータスを取得する
@@ -216,6 +300,8 @@
     
     
   
+   
+    
     
     
     

@@ -14,6 +14,10 @@
 
 
 @interface ReminderViewController : UIViewController
+{
+    NSArray *data1;
+    NSArray *data2;
+}
 
 
 @property (nonatomic,strong)EKReminder *rimainder;
