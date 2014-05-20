@@ -8,7 +8,7 @@
 
 #import "ReminderViewController.h"
 
-@interface ReminderViewController ()
+@interface ReminderViewController ()<UITabBarControllerDelegate,UITableViewDataSource>
 {
     UILabel *myLabel;
     EKEventStore *event;
@@ -127,7 +127,7 @@
         }
             break;
             
-        //まだユーザにアクセス許可のアラートを出していない状態    
+        //まだユーザにアクセス許可のアラートを出していない状態
         case EKAuthorizationStatusNotDetermined:
         {
             // 「このアプリがリマインダーへのアクセスを求めています」といったアラートが表示される
@@ -188,9 +188,37 @@
     [self.view addSubview:table];
 */
     
+//-------------------------------------------------------------
+    NSDate *startDate = [NSDate date];//NSDate distantPast 現在のgmt時間
     
-    NSDate *startDate = [NSDate distantPast];
     NSDate *endDate   = [NSDate distantFuture];
+    
+//--------------------週間---------------------------------------
+
+    NSDateComponents *comps;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    comps = [calendar components:NSYearCalendarUnit|
+             NSMonthCalendarUnit|
+             NSDayCalendarUnit|
+             NSWeekdayCalendarUnit fromDate:startDate];
+    [comps setDay:1];
+
+    NSDate *d = [calendar dateFromComponents:comps];
+    comps = [calendar components:NSYearCalendarUnit|
+             NSMonthCalendarUnit|
+             NSDayCalendarUnit|
+             NSWeekdayCalendarUnit
+                        fromDate:d];
+    
+    int week_day = [comps weekday];
+    
+    
+    
+  
+    
+    
+    
     
     NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
     NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
@@ -201,6 +229,7 @@
          int i = 0;
          for(EKReminder *e in reminders)
          {
+             //タイトル
              NSLog(@"title=%@", e.title);
              NSLog(@"sample=%@", e.dueDateComponents);
              
