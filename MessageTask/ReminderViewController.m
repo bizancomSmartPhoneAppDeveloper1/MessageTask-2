@@ -13,11 +13,15 @@
     UILabel *myLabel;
     EKEventStore *event;
     UIView *view;
-    
+    NSMutableArray *item;
 }
 @end
 
 @implementation ReminderViewController
+
+@synthesize item;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -116,12 +120,15 @@
     //EKAuthorizationStatusの値に応じて処理する
     switch (status)
     {
-        case EKAuthorizationStatusAuthorized:       //アクセスをユーザーが許可している場合
+        //アクセスをユーザーが許可している場合
+        case EKAuthorizationStatusAuthorized:
         {
             
         }
             break;
-        case EKAuthorizationStatusNotDetermined:    //まだユーザにアクセス許可のアラートを出していない状態
+            
+        //まだユーザにアクセス許可のアラートを出していない状態    
+        case EKAuthorizationStatusNotDetermined:
         {
             // 「このアプリがリマインダーへのアクセスを求めています」といったアラートが表示される
             [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
@@ -173,6 +180,13 @@
 {
     NSArray *lists = [event calendarsForEntityType:EKEntityTypeReminder];
     UILabel *label = [[UILabel alloc] init];
+/*
+    UITableView *table = [[UITableView alloc] initWithStyle:UITableViewStylePlain];
+    table.frame = CGRectMake(0, 160, 320, 480);
+    table.delegate = self;
+    table.dataSource = self;
+    [self.view addSubview:table];
+*/
     
     
     NSDate *startDate = [NSDate distantPast];

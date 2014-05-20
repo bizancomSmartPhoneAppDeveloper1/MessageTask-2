@@ -34,7 +34,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     //タイトル（tano）
-    time = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(task) userInfo:nil repeats:YES];
+//5/20   time = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(task) userInfo:nil repeats:YES];
     
     //起動と同時にNSUUIDでuuid作成
     NSUUID *uuid = [NSUUID UUID];
@@ -65,12 +65,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/*
 
--(void)task
+ 5/20いったん削除
+ 
+ -(void)task
 {
     self.startView.hidden = YES;
 }
-
+*/
 
 - (void)showAlert:(NSString *)title message:(NSString *)message
 {

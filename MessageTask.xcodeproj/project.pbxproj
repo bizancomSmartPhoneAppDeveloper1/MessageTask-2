@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18286F4B192AF9210028A385 /* name-ran2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18286F4A192AF9210028A385 /* name-ran2.png */; };
 		189D1608192AAC48005D9F3C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1607192AAC48005D9F3C /* EventKit.framework */; };
 		189D160A192AAC56005D9F3C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1609192AAC56005D9F3C /* EventKitUI.framework */; };
+		189D1611192AED6F005D9F3C /* tsmain1640-960.png in Resources */ = {isa = PBXBuildFile; fileRef = 189D1610192AED6F005D9F3C /* tsmain1640-960.png */; };
 		18A193CE1926F912000A7124 /* ReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A193CD1926F912000A7124 /* ReminderViewController.m */; };
 		18A193FE1926FBF9000A7124 /* 2914.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D01926FBF9000A7124 /* 2914.png */; };
 		18A193FF1926FBF9000A7124 /* 2914.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A193D01926FBF9000A7124 /* 2914.png */; };
@@ -124,8 +126,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18286F4A192AF9210028A385 /* name-ran2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name-ran2.png"; sourceTree = "<group>"; };
 		189D1607192AAC48005D9F3C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		189D1609192AAC56005D9F3C /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		189D1610192AED6F005D9F3C /* tsmain1640-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tsmain1640-960.png"; path = "../../tsmain1640-960.png"; sourceTree = "<group>"; };
 		18A193CC1926F912000A7124 /* ReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderViewController.h; sourceTree = "<group>"; };
 		18A193CD1926F912000A7124 /* ReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderViewController.m; sourceTree = "<group>"; };
 		18A193D01926FBF9000A7124 /* 2914.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2914.png; sourceTree = "<group>"; };
@@ -220,7 +224,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */ = {
+		18A193CF1926FBF9000A7124 /* sphoneicon */ = {
 			isa = PBXGroup;
 			children = (
 				18A193D01926FBF9000A7124 /* 2914.png */,
@@ -228,29 +232,33 @@
 				18A193D21926FBF9000A7124 /* s00229.png */,
 				18A193D31926FBF9000A7124 /* suma8.png */,
 				18A193D41926FBF9000A7124 /* suma8かり.png */,
-				18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */,
-				18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */,
+				18A193D51926FBF9000A7124 /* layout */,
+				18A193DF1926FBF9000A7124 /* prettyetc */,
 			);
+			name = sphoneicon;
 			path = "スマートフォンアイコン詰め";
 			sourceTree = "<group>";
 		};
-		18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */ = {
+		18A193D51926FBF9000A7124 /* layout */ = {
 			isa = PBXGroup;
 			children = (
 				18A193D61926FBF9000A7124 /* adverties-button.png */,
+				189D1610192AED6F005D9F3C /* tsmain1640-960.png */,
 				18A193D71926FBF9000A7124 /* browes-button.png */,
 				18A193D81926FBF9000A7124 /* browes-button1.png */,
 				18A193D91926FBF9000A7124 /* haikei-all.png */,
 				18A193DA1926FBF9000A7124 /* kousin-button.png */,
 				18A193DB1926FBF9000A7124 /* massge-button.png */,
 				18A193DC1926FBF9000A7124 /* name-ran.png */,
+				18286F4A192AF9210028A385 /* name-ran2.png */,
 				18A193DD1926FBF9000A7124 /* sousin-button.png */,
 				18A193DE1926FBF9000A7124 /* tsmain.png */,
 			);
+			name = layout;
 			path = "Taskshotデザインまとめ";
 			sourceTree = "<group>";
 		};
-		18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */ = {
+		18A193DF1926FBF9000A7124 /* prettyetc */ = {
 			isa = PBXGroup;
 			children = (
 				18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */,
@@ -276,6 +284,7 @@
 				18A193F41926FBF9000A7124 /* C00225-002N.jpg */,
 				18A193F51926FBF9000A7124 /* earth_icon */,
 			);
+			name = prettyetc;
 			path = "きれいなアイコンその他";
 			sourceTree = "<group>";
 		};
@@ -338,7 +347,7 @@
 				18A193CC1926F912000A7124 /* ReminderViewController.h */,
 				18A193CD1926F912000A7124 /* ReminderViewController.m */,
 				DD01BE11191B1D9100761848 /* Images.xcassets */,
-				18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */,
+				18A193CF1926FBF9000A7124 /* sphoneicon */,
 				DD01BE00191B1D9100761848 /* Supporting Files */,
 			);
 			path = MessageTask;
@@ -453,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A1944C1926FBF9000A7124 /* red.png in Resources */,
+				18286F4B192AF9210028A385 /* name-ran2.png in Resources */,
 				18A1940C1926FBF9000A7124 /* browes-button1.png in Resources */,
 				18A1942C1926FBF9000A7124 /* actions_services_256x256.png in Resources */,
 				18A194521926FBF9000A7124 /* yellow.png in Resources */,
@@ -466,6 +476,7 @@
 				18A194141926FBF9000A7124 /* name-ran.png in Resources */,
 				18A194221926FBF9000A7124 /* actions_document-send_256x256.png in Resources */,
 				18A194461926FBF9000A7124 /* blue.png in Resources */,
+				189D1611192AED6F005D9F3C /* tsmain1640-960.png in Resources */,
 				18A194081926FBF9000A7124 /* adverties-button.png in Resources */,
 				18A1942A1926FBF9000A7124 /* actions_object-rotate-right-3_48x48.png in Resources */,
 				18A194361926FBF9000A7124 /* actions_view-refresh-5_256x256.png in Resources */,

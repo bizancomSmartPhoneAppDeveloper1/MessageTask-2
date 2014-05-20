@@ -14,7 +14,10 @@
 
 
 @interface ReminderViewController : UIViewController
+
+
 @property (nonatomic,strong)EKReminder *rimainder;
+@property (retain,nonatomic)NSMutableArray *item;
 
 - (IBAction)newButton:(UIButton *)sender;
 - (IBAction)gobackButton:(UIButton *)sender;
