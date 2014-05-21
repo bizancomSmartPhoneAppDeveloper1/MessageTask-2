@@ -8,7 +8,7 @@
 
 #import "ReminderViewController.h"
 
-@interface ReminderViewController ()<UITabBarControllerDelegate,UITableViewDataSource>
+@interface ReminderViewController ()
 {
     UILabel *myLabel;
     EKEventStore *event;
@@ -44,9 +44,10 @@
     //----------------------初期化
     event = [[EKEventStore alloc]init];
     //セッション用データ１わく・２わく
-    data1 = @[@"ケーキ♪"];
-    data2 = @[@"チーズ"];
- 
+/*    data1 = @[@"チーズ"];
+    data2 = @[@"ケーキ"];
+*/
+    
 
     
 }
@@ -67,84 +68,6 @@
  // Pass the selected object to the new view controller.
  }
  */
-//-----------------------画面の構成（リマインダーを使うにあたり）1セッション数
-
--(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-//行数に関わる所
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-   // return 2;　↓行間にそれぞれ欲しい情報を放り込む・・・（＝＝；）たい。
-    if (section == 0)
-    {
-        return data1.count;
-    }else {
-        return data2.count;
-    }
-}
-
-//セクションにヘッダーをつける
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    //   return 0;//[NSString stringWithFormat:@"Header<%@>",_title];//エラーがでちゃう・・・意味無し「０」就任中！
-    if (section == 0)
-    {
-        return @"好きな物☆";
-    }else
-    {
-        return @"嫌いな物☆";
-    }
-}
-
-
-//1表示する,2セルの準備、3表示の文字、4セルのラベル設定
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *cellIdenttifier = @"selfCell";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:cellIdenttifier];
-    if (cell == nil)
-    {
-    //    cell = [tableView dequeueReusableCellWithIdentifier:cellIdenttifier];
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdenttifier];
-    }
-    if (indexPath.section == 0)
-    {
-        cell.textLabel.text = [data1 objectAtIndex:indexPath.row];
-        
-    }
-    else
-    {
-        cell.textLabel.text = [data2 objectAtIndex:indexPath.row];
-    }
-    
-  /*  NSString *title = [NSString stringWithFormat:@"背くションの%dの%d行",indexPath.section,indexPath.row];
-    
-        tableView.rowHeight = 50;
-        cell.textLabel.text = title;
-   */
-        return cell;
-    
- //   [self somethingReminder];
-}
-
-
-
-//選択時行う処理
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
- //   NSLog(@"セクション%dの%d",indexPath.section,indexpath.row);
-    
-}
-
-//ステータスバー非表示
--(BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
 
 -(void)lookRemainder
 {
@@ -191,9 +114,10 @@
                                              otherButtonTitles:nil];
         [alert show];
         [self somethingReminder];
-        
+
     }
 }
+
 
 -(void)showRemin
 {
@@ -259,18 +183,13 @@
 
 }
 
+
+
 //リマインダー操作
 -(void)somethingReminder
 {
     NSArray *lists = [event calendarsForEntityType:EKEntityTypeReminder];
     UILabel *label = [[UILabel alloc] init];
-/*
-    UITableView *table = [[UITableView alloc] initWithStyle:UITableViewStylePlain];
-    table.frame = CGRectMake(0, 160, 320, 480);
-    table.delegate = self;
-    table.dataSource = self;
-    [self.view addSubview:table];
-*/
     
 //-------------------------------------------------------------
     NSDate *startDate = [NSDate date];//NSDate distantPast 現在のgmt時間
@@ -299,13 +218,6 @@
     
     
     
-  
-   
-    
-    
-    
-    
-    
     NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
     NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
 
@@ -330,10 +242,7 @@
              NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
              
              
-             
-             
-             
-             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50 , 100*i, 50, 30)];//１番目
+             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(50 , 200*i, 50, 30)];//１番目
              //UILabel *label = [[UILabel al]]
              UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(100,100*i,200,30)];//1番目は（画面位置の横幅）,2番目は（高さ）,３番目は（）,４番目は（）
              label.textColor = [UIColor blackColor];
@@ -377,6 +286,5 @@
 {
 
 }
-
 
 @end
