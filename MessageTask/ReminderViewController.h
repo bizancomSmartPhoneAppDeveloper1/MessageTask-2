@@ -13,7 +13,7 @@
 
 
 
-@interface ReminderViewController : UIViewController
+@interface ReminderViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *data1;
     NSArray *data2;
@@ -22,6 +22,12 @@
 
 @property (nonatomic,strong)EKReminder *rimainder;
 @property (retain,nonatomic)NSMutableArray *item;
+
+@property (weak, nonatomic) IBOutlet UILabel *_titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *_notoLabel;
+
+
+
 
 - (IBAction)newButton:(UIButton *)sender;
 - (IBAction)gobackButton:(UIButton *)sender;

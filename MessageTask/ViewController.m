@@ -81,10 +81,6 @@
     [alert show];
 }
 
-
-
-
-
 - (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error
 {
   // BLog();
@@ -165,7 +161,7 @@
 {
     // BLog();
     NSLog(@"[peerID] %@", peerID);
-    NSLog(@"[state] %d", state);
+    NSLog(@"[state] %ld", state);
    
     
     if(state == MCSessionStateConnected && self.session){
