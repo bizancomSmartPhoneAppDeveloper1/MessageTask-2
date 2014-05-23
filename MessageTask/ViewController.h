@@ -11,6 +11,7 @@
 
 @interface ViewController : UIViewController < MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate >
 {
+    
     MCPeerID *myPeerID;
     NSString *serviceType;
     NSTimer *time;
