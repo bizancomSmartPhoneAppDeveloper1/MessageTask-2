@@ -20,7 +20,7 @@
     
     UIView *view;
     
-    NSMutableArray *item;
+//    NSMutableArray *item;
     
     
     
@@ -35,15 +35,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return item.count;//配列に入れてカウントさせてる
+    return _item.count;//配列に入れてカウントさせてる
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"test");
+//    NSLog(@"test");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:indexPath];
 //配列に入れたものを１行１行の書き出し・タイトル・メモ
-    EKReminder *elements = [item objectAtIndex:indexPath.row];
+    EKReminder *elements = [_item objectAtIndex:indexPath.row];
     NSString *titles = [NSString stringWithFormat:@"%@",elements.title];
     NSString *noto = [NSString stringWithFormat:@"%@",elements.notes];
 //ラベルに書き出す（１・２）
@@ -54,7 +54,7 @@
     label = (UILabel *)[cell viewWithTag:2];
     label.text = [NSString stringWithFormat:@"%@",noto];
          
-    NSLog(@"noto=%@",noto);
+//    NSLog(@"noto=%@",noto);
     //セルにかえす
      return cell;
 }
@@ -92,7 +92,7 @@
     
     event = [[EKEventStore alloc]init];
     
-    item = [NSMutableArray array];
+    _item = [NSMutableArray array];
     
     NSDate *startDate = [NSDate distantPast];
     
@@ -102,10 +102,10 @@
     
     [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
      {
-         item = [reminders mutableCopy];
+         _item = [reminders mutableCopy];
      }];
     
-    NSLog(@"%@",item);
+    NSLog(@"%@",_item);
 }
 
 
@@ -563,6 +563,7 @@
                  NSString *titles = [NSString stringWithFormat:@"%@ \n",e.title];
                  
                  NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
+                 
                    //「label（コードで作成）」から「_titleLabel（プロパティある方）」へ
                  __titleLabel.textColor = [UIColor blackColor];
                  
