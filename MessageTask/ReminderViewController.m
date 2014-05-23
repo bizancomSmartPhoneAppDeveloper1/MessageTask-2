@@ -105,7 +105,7 @@
          item = [reminders mutableCopy];
      }];
     
-    NSLog(@"%@",item);
+    NSLog(@"item_data = %@",item);
 }
 
 
