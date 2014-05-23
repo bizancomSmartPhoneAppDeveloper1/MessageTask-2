@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-session:peer:didChangeState:"
+            landmarkName = "-session:didReceiveStream:withName:fromPeer:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
