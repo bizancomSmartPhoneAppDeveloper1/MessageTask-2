@@ -35,18 +35,18 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return item.count;
+    return item.count;//配列に入れてカウントさせてる
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"test");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:indexPath];
-
+//配列に入れたものを１行１行の書き出し・タイトル・メモ
     EKReminder *elements = [item objectAtIndex:indexPath.row];
     NSString *titles = [NSString stringWithFormat:@"%@",elements.title];
     NSString *noto = [NSString stringWithFormat:@"%@",elements.notes];
-         
+//ラベルに書き出す（１・２）
     UILabel *label;
     label = (UILabel *)[cell viewWithTag:1];
     label.text = [NSString stringWithFormat:@"%@",titles];
@@ -55,21 +55,9 @@
     label.text = [NSString stringWithFormat:@"%@",noto];
          
     NSLog(@"noto=%@",noto);
+    //セルにかえす
      return cell;
 }
- /*
-         EKEventViewController *datailViewController =[[EKEventViewController alloc]initWithNibName:nil bundle:nil];
-         
-         //         datailViewController.event = [event objectAtindex:0];
-         
-         [self.navigationController pushViewController:datailViewController animated:YES];
-         
-         [datailViewController reloadInputViews];
-  
-  }];
-    
-    [self.view addSubview:label];
-*/
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
@@ -86,8 +74,6 @@
     return self;
     
 }
-
-
 
 -(BOOL)shouldAutorotate//i phone横に倒しても回転しないように
 
@@ -363,12 +349,8 @@
             break;
             
     }
-    
-    
-    
+  
 }
-
-
 
 //リマインダー操作
 /*karidome 5/21
@@ -528,9 +510,6 @@
 }
 
 
-
-
-
 //karidome 5/21
 -(void)labelReminder
 {
@@ -585,7 +564,6 @@
                  
                  NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
                    //「label（コードで作成）」から「_titleLabel（プロパティある方）」へ
- 
                  __titleLabel.textColor = [UIColor blackColor];
                  
                  __titleLabel.font = [UIFont systemFontOfSize:12];

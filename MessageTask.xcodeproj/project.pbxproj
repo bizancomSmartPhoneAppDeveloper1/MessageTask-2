@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18286F4B192AF9210028A385 /* name-ran2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18286F4A192AF9210028A385 /* name-ran2.png */; };
+		189CD8C8192E0E2E007662B1 /* transmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD8C7192E0E2E007662B1 /* transmissionViewController.m */; };
 		189D1608192AAC48005D9F3C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1607192AAC48005D9F3C /* EventKit.framework */; };
 		189D160A192AAC56005D9F3C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1609192AAC56005D9F3C /* EventKitUI.framework */; };
 		189D1611192AED6F005D9F3C /* tsmain1640-960.png in Resources */ = {isa = PBXBuildFile; fileRef = 189D1610192AED6F005D9F3C /* tsmain1640-960.png */; };
@@ -127,6 +128,8 @@
 
 /* Begin PBXFileReference section */
 		18286F4A192AF9210028A385 /* name-ran2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name-ran2.png"; sourceTree = "<group>"; };
+		189CD8C6192E0E2E007662B1 /* transmissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transmissionViewController.h; sourceTree = "<group>"; };
+		189CD8C7192E0E2E007662B1 /* transmissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = transmissionViewController.m; sourceTree = "<group>"; };
 		189D1607192AAC48005D9F3C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		189D1609192AAC56005D9F3C /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		189D1610192AED6F005D9F3C /* tsmain1640-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tsmain1640-960.png"; path = "../../tsmain1640-960.png"; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				DD01BE0F191B1D9100761848 /* ViewController.m */,
 				18A193CC1926F912000A7124 /* ReminderViewController.h */,
 				18A193CD1926F912000A7124 /* ReminderViewController.m */,
+				189CD8C6192E0E2E007662B1 /* transmissionViewController.h */,
+				189CD8C7192E0E2E007662B1 /* transmissionViewController.m */,
 				DD01BE11191B1D9100761848 /* Images.xcassets */,
 				18A193CF1926FBF9000A7124 /* sphoneicon */,
 				DD01BE00191B1D9100761848 /* Supporting Files */,
@@ -571,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A193CE1926F912000A7124 /* ReminderViewController.m in Sources */,
+				189CD8C8192E0E2E007662B1 /* transmissionViewController.m in Sources */,
 				DD01BE10191B1D9100761848 /* ViewController.m in Sources */,
 				DD01BE0A191B1D9100761848 /* AppDelegate.m in Sources */,
 				DD01BE06191B1D9100761848 /* main.m in Sources */,
