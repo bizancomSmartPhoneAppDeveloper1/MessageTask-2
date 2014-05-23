@@ -39,6 +39,7 @@
     //起動と同時にNSUUIDでuuid作成
     NSUUID *uuid = [NSUUID UUID];
     //MCPeerID は，デバイス毎に一意です、myPeerIDに入れる
+    
     myPeerID = [[MCPeerID alloc] initWithDisplayName:[uuid UUIDString]];
     //任意の NSStringクラスの namePeerIDクラスの中にmyPeerIDのdisplayNameプロパティを入れる
     NSString *namePeerID = myPeerID.displayName;
