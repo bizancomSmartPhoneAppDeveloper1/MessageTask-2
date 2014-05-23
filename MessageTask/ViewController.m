@@ -13,207 +13,60 @@
 @end
 @implementation ViewController
  
-
-@synthesize myPeerID;
-@synthesize serviceType;
-@synthesize nearbyServiceAdvertiser;
-@synthesize nearbyServiceBrowser;
-@synthesize session;
-
-@synthesize labelMyPeerIDIPHONE;
-@synthesize labelYourPeerIDIPHONE;
-
-
-- (BOOL)isPhone
-{
-    return (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone);
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    //タイトル（tano）
-//5/20   time = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(task) userInfo:nil repeats:YES];
-    
-    //起動と同時にNSUUIDでuuid作成
-    NSUUID *uuid = [NSUUID UUID];
-    //MCPeerID は，デバイス毎に一意です、myPeerIDに入れる
-    myPeerID = [[MCPeerID alloc] initWithDisplayName:[uuid UUIDString]];
-    //任意の NSStringクラスの namePeerIDクラスの中にmyPeerIDのdisplayNameプロパティを入れる
-    NSString *namePeerID = myPeerID.displayName;
-    //namePeerIDの中身をNSLogをつかって表示
-    NSLog(@"[peerID.displayName] %@", namePeerID);
-    
-    if([self isPhone]){
-        labelMyPeerIDIPHONE.text = myPeerID.displayName;
-    }else{
-        self.labelMyPeerIDIPHONE.text = myPeerID.displayName;
-    }
-    //任意の NSString で serviceType を作成します
-    serviceType = @"p2ptest";
-    
-    nearbyServiceBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myPeerID serviceType:serviceType];
-    nearbyServiceBrowser.delegate = self;
-    
-    session = [[MCSession alloc] initWithPeer:myPeerID securityIdentity:nil encryptionPreference:MCEncryptionNone];
+    MCPeerID *peerID = [[MCPeerID alloc] initWithDisplayName:[UIDevice currentDevice].name];
+    MCSession *session = [[MCSession alloc]initWithPeer:peerID securityIdentity:nil encryptionPreference:MCEncryptionNone];
     session.delegate = self;
-}
+    self.assistant = [[MCAdvertiserAssistant alloc] initWithServiceType:@"test-service" discoveryInfo:nil session:session];
+    self.assistant.delegate = self;
+    [self.assistant start];
+	    }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
 
- 5/20いったん削除
- 
- -(void)task
-{
-    self.startView.hidden = YES;
+
+- (IBAction)botton:(UIButton *)sender {
+    MCBrowserViewController *browseViewController = [[MCBrowserViewController alloc] initWithServiceType:@"test-service" session:self.assistant.session];
+    browseViewController.delegate = self;
+    browseViewController.minimumNumberOfPeers = kMCSessionMinimumNumberOfPeers;
+    browseViewController.maximumNumberOfPeers = kMCSessionMaximumNumberOfPeers;
+    [self presentViewController:browseViewController animated:YES completion:NULL];
+
 }
-*/
-
-- (void)showAlert:(NSString *)title message:(NSString *)message
-{
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+- (void)advertiserAssitantWillPresentInvitation:(MCAdvertiserAssistant *)advertiserAssistant;{
+    //接続要求きた
+    NSLog(@"kita");
 }
-
-- (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error
-{
-  // BLog();
-    if(error){
-        NSLog(@"[error localizedDescription] %@", [error localizedDescription]);
-    }
+#pragma mark - MCBrowserViewControllerDelegate
+- (void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController;{
+    [browserViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+- (void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController;{
+    [browserViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+- (BOOL)browserViewController:(MCBrowserViewController *)browserViewController shouldPresentNearbyPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info;{
+    return YES;
+}
+- (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info;{
     
 }
-
-
-- (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
-{
-    // BLog();
-    NSLog(@"found Peer : %@", peerID.displayName);
-    [self showAlert:@"found Peer" message:peerID.displayName];
-    if([self isPhone]){
-        labelYourPeerIDIPHONE.text = peerID.displayName;
-    }else{
-        labelYourPeerIDIPHONE.text = peerID.displayName;
-    }
-    [nearbyServiceBrowser invitePeer:peerID toSession:session withContext:[@"Welcome" dataUsingEncoding:NSUTF8StringEncoding] timeout:10];
+- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID{
 }
-
-
-- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
-{
-    // BLog();
-}
-
-
-
-- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error
-{
-    // BLog();
-    if(error){
-        NSLog(@"%@", [error localizedDescription]);
-        [self showAlert:@"ERROR didNotStartAdvertisingPeer" message:[error localizedDescription]];
-    }
-}
-
-
-- (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL accept, MCSession *session))invitationHandler
-{
-    // BLog();
-    invitationHandler(TRUE, self.session);
-    [self showAlert:@"didReceiveInvitationFromPeer" message:@"accept invitation!"];
-}
-
-
-
-- (void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
-{
-    // BLog();
-    NSString *receivedData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [self showAlert:@"didReceiveData" message:receivedData];
-}
-
-
-- (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress
-{
-    // BLog();
-}
-
-
-- (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error
-{
-    // BLog();
-}
-
-
-- (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
-{
-    // BLog();
-}
-
-
-- (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
-{
-    // BLog();
-    NSLog(@"[peerID] %@", peerID);
-    NSLog(@"[state] %ld", state);
-   
+-(void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void (^)(BOOL, MCSession *))invitationHandler;{
     
-    if(state == MCSessionStateConnected && self.session){
-        NSLog(@"session sends data!");
-        NSError *error;
-        NSString *message = [NSString stringWithFormat:@"message from %@", myPeerID.displayName];
-        [self.session sendData:[message dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:peerID] withMode:MCSessionSendDataReliable error:&error];
-        //[self showAlert:@"Send data" message:@"hello"];
-    }
+}
+- (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state;{
+    //ピアの接続状態が変化するとMCSessionのデリゲートメッソドが呼ばれる
+    NSLog(@"jiji");
 }
 
 
-- (BOOL)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
-{
-    // BLog();
-    certificateHandler(TRUE);
-    return TRUE;
-}
-- (void)startAdvertising
-{
-    NSDictionary *discoveryInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"foo", @"bar", @"bar", @"foo", nil];
-    nearbyServiceAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myPeerID discoveryInfo:discoveryInfo serviceType:serviceType];
-    nearbyServiceAdvertiser.delegate = self;
-    [nearbyServiceAdvertiser startAdvertisingPeer];
-}
-
-- (IBAction)btnStartAdvertisingIPHONE:(id)sender {
-    // BLog();
-    //[self showAlert:@"iPhone" message:@"startAdvertisingPeer"];
-    [self startAdvertising];
-}
-
-
-- (IBAction)btnStopAdvertisingIPHONE:(id)sender {
-    // BLog();
-    
-    [nearbyServiceAdvertiser stopAdvertisingPeer];
-}
-
-
-
-- (IBAction)btnStartBrowsingIPHONE:(id)sender {
-    // BLog();
-    
-    [nearbyServiceBrowser startBrowsingForPeers];
-}
-
-- (IBAction)btnStopBrowsingIPHONE:(id)sender {
-    // BLog();
-   
-    [nearbyServiceBrowser stopBrowsingForPeers];
-}
-
+//送信
 
 @end
