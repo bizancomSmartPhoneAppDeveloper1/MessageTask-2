@@ -161,7 +161,7 @@
 {
     // BLog();
     NSLog(@"[peerID] %@", peerID);
-    NSLog(@"[state] %ld", state);
+    NSLog(@"[state] %d", state);
    
     
     if(state == MCSessionStateConnected && self.session){
