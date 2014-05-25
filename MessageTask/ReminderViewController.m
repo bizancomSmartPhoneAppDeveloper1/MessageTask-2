@@ -7,8 +7,7 @@
 //
 
 #import "ReminderViewController.h"
-#import <EventKit/EventKit.h>
-#import <EventKitUI/EventKitUI.h>
+
 
 
 @interface ReminderViewController ()
@@ -27,6 +26,7 @@
 
 @implementation ReminderViewController
 
+//-----------------
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -82,6 +82,7 @@
 
 {
     [super viewDidLoad];
+    
     //----------------------初期化
     
     event = [[EKEventStore alloc]init];
@@ -99,11 +100,10 @@
      {calendar = [event defaultCalendarForNewReminders];
      
          EKReminder *post = [EKReminder reminderWithEventStore:event];
-         post.title = @"モモちゃん登場";
-        // post.title = @"粗塩vsカリブ海";
+         post.title = @"モモちゃん登場";         
          
          post.notes = @"今日はリマインダーをやる！（＾＿＾；）やれるのか・・ww！";
-        // post.notes = @"粗いから粗塩の勝ち☆";
+        
          post.calendar = [event defaultCalendarForNewReminders];
 
          BOOL success = [event saveReminder:post commit:YES error:&error];
@@ -113,8 +113,39 @@
          }
      }];
     
-        
-    //取り出し
+//追加----------------
+    EKReminder *new_reminder = [EKReminder reminderWithEventStore:event];
+    new_reminder.title = @"牛乳を買ってかえる";
+    new_reminder.calendar = calendar;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:2013];
+    [dateComponents setMonth:12];
+    [dateComponents setDay:18];
+    [dateComponents setHour:20];
+    new_reminder.dueDateComponents = dateComponents;
+    
+    //開始時間、期限にぶち込む
+    [new_reminder setStartDateComponents:dateComponents];
+    [new_reminder setDueDateComponents:dateComponents];
+    
+    
+    //Alarmを設定する。これをしていないと通知がこない。
+    NSDate *alarmDate = [calendar dateFromComponents:dateComponents];
+    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
+    [new_reminder addAlarm:alarm];
+
+//通知----------
+    [new_reminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[[NSCalendar currentCalendar] dateFromComponents:dateComponents]]];
+    
+    NSError *error;
+    if(![event saveReminder:new_reminder commit:YES error:&error]) NSLog(@"%@", error);
+
+    
+    
+    //取り出し-----------------------
     [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
      {
          _item = [reminders mutableCopy];
@@ -505,16 +536,14 @@
                  NSLog(@"title=%@", e.title);
                  
                  NSLog(@"sample=%@", e.dueDateComponents);
+                
+                 NSLog(@"*****alam=%@",e.alarms);
                  
-                 
-                 
-                 NSLog(@"title=%@", e.title);
-                 
-                 NSLog(@"sample=%@", e.dueDateComponents);
-                 
-                 // NSLog(@"%@",e.location);
+                  NSLog(@"%@",e.location);
                  
                  NSLog(@"%@",e.notes);
+                 
+                 NSLog(@"::::time=%@",e.timeZone);
                  
                  
                  
@@ -582,4 +611,5 @@
  
     }
 }
+
 @end
