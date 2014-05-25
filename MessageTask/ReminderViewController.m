@@ -26,7 +26,10 @@
 
 @implementation ReminderViewController
 
-//-----------------
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self lookRemainder];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -55,6 +58,8 @@
     //セルにかえす
      return cell;
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
@@ -583,6 +588,11 @@
                  
                 NSLog(@"noto=%@",noto);
  
+                 EKEventStore *eventStore = [[EKEventStore alloc] init];
+                 NSArray *lists = [eventStore calendarsForEntityType:EKEntityTypeReminder];
+                 EKCalendar *sampleList = [lists firstObject];
+                 
+                 NSLog(@"kokokokoko%@",sampleList);
                  
   //           UITableViewCell *cell = [UITableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:NSIndexPath];
                  

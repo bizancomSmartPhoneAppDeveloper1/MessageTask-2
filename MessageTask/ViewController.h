@@ -5,37 +5,45 @@
 //  Created by bizan.com.mac12 on 2014/05/04.
 //  Copyright (c) 2014年 mycompany. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
-@interface ViewController : UIViewController < MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate >
+@interface ViewController : UIViewController < MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate,NSStreamDelegate,MCAdvertiserAssistantDelegate,MCBrowserViewControllerDelegate >
 {
     MCPeerID *myPeerID;
     NSString *serviceType;
     NSTimer *time;
 }
+
 @property (strong, nonatomic) MCPeerID *myPeerID;
 @property (strong, nonatomic) NSString *serviceType;
 @property (strong, nonatomic) MCNearbyServiceAdvertiser *nearbyServiceAdvertiser;
 @property (strong, nonatomic) MCNearbyServiceBrowser *nearbyServiceBrowser;
 @property (strong, nonatomic) MCSession *session;
+@property id stepDelegate;
+@property (assign,nonatomic)id<UIPageViewControllerDelegate>delegate;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *labelMyPeerIDIPHONE;
-@property (weak, nonatomic) IBOutlet UILabel *labelYourPeerIDIPHONE;
-//op画面（tano）
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *startView;
 
 
+- (IBAction)connect:(UIButton *)sender;
 
-- (IBAction)btnStartAdvertisingIPHONE:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *myself;
+@property (weak, nonatomic) IBOutlet UILabel *companion;
 
-- (IBAction)btnStopAdvertisingIPHONE:(id)sender;
 
 
-- (IBAction)btnStartBrowsingIPHONE:(id)sender;
-- (IBAction)btnStopBrowsingIPHONE:(id)sender;
+
+
+//-----------------------------------------------------
+
+
+
+
+
 
 
 
