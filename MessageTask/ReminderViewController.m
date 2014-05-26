@@ -17,11 +17,7 @@
     
     EKEventStore *event;
     
-    UIView *view;
-    
-//    NSMutableArray *item;
-    
-    
+    EKCalendar *calendar;
     
     UIView *view;
 }
@@ -160,7 +156,7 @@
          _item = [reminders mutableCopy];
      }];
     
-    NSLog(@"%@",_item);
+    NSLog(@"item_data = %@",_item);
 }
 
 
