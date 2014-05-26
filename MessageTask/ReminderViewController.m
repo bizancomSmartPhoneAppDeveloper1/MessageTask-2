@@ -100,25 +100,9 @@
     
     NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
     
-    //イベントストアに接続ーーーーーリマインダーへ登録
-    [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
-     {calendar = [event defaultCalendarForNewReminders];
-     
-         EKReminder *post = [EKReminder reminderWithEventStore:event];
-         post.title = @"モモちゃん登場";         
-         
-         post.notes = @"今日はリマインダーをやる！（＾＿＾；）やれるのか・・ww！";
-        
-         post.calendar = [event defaultCalendarForNewReminders];
-
-         BOOL success = [event saveReminder:post commit:YES error:&error];
-         if (!success)
-         {//投稿失敗
-             NSLog(@"%@",[error description]);
-         }
-     }];
+    [self saveToRemider:@"test Title" saveTextNote:@"test本文の入力１"];
     
-//追加----------------
+    //追加----------------
     EKReminder *new_reminder = [EKReminder reminderWithEventStore:event];
     new_reminder.title = @"牛乳を買ってかえる";
     new_reminder.calendar = calendar;
@@ -142,7 +126,7 @@
     EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
     [new_reminder addAlarm:alarm];
 
-//通知----------
+    //通知----------
     [new_reminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[[NSCalendar currentCalendar] dateFromComponents:dateComponents]]];
     
     NSError *error;
@@ -169,6 +153,26 @@
     // Dispose of any resources that can be recreated.
     
 }
+-(void)saveToRemider:(NSString *)title saveTextNote:(NSString *)note {
+    //イベントストアに接続ーーーーーリマインダーへ登録
+    [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
+     {calendar = [event defaultCalendarForNewReminders];
+         
+         EKReminder *post = [EKReminder reminderWithEventStore:event];
+         post.title = title;
+         
+         post.notes = note;
+         
+         post.calendar = [event defaultCalendarForNewReminders];
+         
+         BOOL success = [event saveReminder:post commit:YES error:&error];
+         if (!success)
+         {//投稿失敗
+             NSLog(@"%@",[error description]);
+         }
+     }];
+}
+
 
 -(void)lookRemainder
 

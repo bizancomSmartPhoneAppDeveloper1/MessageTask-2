@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18286F4B192AF9210028A385 /* name-ran2.png in Resources */ = {isa = PBXBuildFile; fileRef = 18286F4A192AF9210028A385 /* name-ran2.png */; };
 		189CD8C8192E0E2E007662B1 /* transmissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CD8C7192E0E2E007662B1 /* transmissionViewController.m */; };
 		189D1608192AAC48005D9F3C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1607192AAC48005D9F3C /* EventKit.framework */; };
 		189D160A192AAC56005D9F3C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189D1609192AAC56005D9F3C /* EventKitUI.framework */; };
@@ -127,7 +126,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18286F4A192AF9210028A385 /* name-ran2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name-ran2.png"; sourceTree = "<group>"; };
 		189CD8C6192E0E2E007662B1 /* transmissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transmissionViewController.h; sourceTree = "<group>"; };
 		189CD8C7192E0E2E007662B1 /* transmissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = transmissionViewController.m; sourceTree = "<group>"; };
 		189D1607192AAC48005D9F3C /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -253,7 +251,6 @@
 				18A193DA1926FBF9000A7124 /* kousin-button.png */,
 				18A193DB1926FBF9000A7124 /* massge-button.png */,
 				18A193DC1926FBF9000A7124 /* name-ran.png */,
-				18286F4A192AF9210028A385 /* name-ran2.png */,
 				18A193DD1926FBF9000A7124 /* sousin-button.png */,
 				18A193DE1926FBF9000A7124 /* tsmain.png */,
 			);
@@ -467,7 +464,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A1944C1926FBF9000A7124 /* red.png in Resources */,
-				18286F4B192AF9210028A385 /* name-ran2.png in Resources */,
 				18A1940C1926FBF9000A7124 /* browes-button1.png in Resources */,
 				18A1942C1926FBF9000A7124 /* actions_services_256x256.png in Resources */,
 				18A194521926FBF9000A7124 /* yellow.png in Resources */,
