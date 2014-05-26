@@ -13,7 +13,6 @@
 @interface ReminderViewController ()
 
 {
-    
     UILabel *myLabel;
     
     EKEventStore *event;
@@ -24,14 +23,17 @@
     
     
     
+    UIView *view;
 }
 
 @end
 
-
-
 @implementation ReminderViewController
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self lookRemainder];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -42,10 +44,12 @@
 {
 //    NSLog(@"test");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:indexPath];
+
 //配列に入れたものを１行１行の書き出し・タイトル・メモ
     EKReminder *elements = [_item objectAtIndex:indexPath.row];
     NSString *titles = [NSString stringWithFormat:@"%@",elements.title];
     NSString *noto = [NSString stringWithFormat:@"%@",elements.notes];
+
 //ラベルに書き出す（１・２）
     UILabel *label;
     label = (UILabel *)[cell viewWithTag:1];
@@ -58,6 +62,8 @@
     //セルにかえす
      return cell;
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
@@ -78,16 +84,14 @@
 -(BOOL)shouldAutorotate//i phone横に倒しても回転しないように
 
 {
-    
     return NO;
-    
 }
 
 - (void)viewDidLoad
 
 {
-    
     [super viewDidLoad];
+    
     //----------------------初期化
     
     event = [[EKEventStore alloc]init];
@@ -100,6 +104,57 @@
     
     NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
     
+    //イベントストアに接続ーーーーーリマインダーへ登録
+    [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
+     {calendar = [event defaultCalendarForNewReminders];
+     
+         EKReminder *post = [EKReminder reminderWithEventStore:event];
+         post.title = @"モモちゃん登場";         
+         
+         post.notes = @"今日はリマインダーをやる！（＾＿＾；）やれるのか・・ww！";
+        
+         post.calendar = [event defaultCalendarForNewReminders];
+
+         BOOL success = [event saveReminder:post commit:YES error:&error];
+         if (!success)
+         {//投稿失敗
+             NSLog(@"%@",[error description]);
+         }
+     }];
+    
+//追加----------------
+    EKReminder *new_reminder = [EKReminder reminderWithEventStore:event];
+    new_reminder.title = @"牛乳を買ってかえる";
+    new_reminder.calendar = calendar;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:2013];
+    [dateComponents setMonth:12];
+    [dateComponents setDay:18];
+    [dateComponents setHour:20];
+    new_reminder.dueDateComponents = dateComponents;
+    
+    //開始時間、期限にぶち込む
+    [new_reminder setStartDateComponents:dateComponents];
+    [new_reminder setDueDateComponents:dateComponents];
+    
+    
+    //Alarmを設定する。これをしていないと通知がこない。
+    NSDate *alarmDate = [calendar dateFromComponents:dateComponents];
+    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
+    [new_reminder addAlarm:alarm];
+
+//通知----------
+    [new_reminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[[NSCalendar currentCalendar] dateFromComponents:dateComponents]]];
+    
+    NSError *error;
+    if(![event saveReminder:new_reminder commit:YES error:&error]) NSLog(@"%@", error);
+
+    
+    
+    //取り出し-----------------------
     [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
      {
          _item = [reminders mutableCopy];
@@ -119,44 +174,18 @@
     
 }
 
-
-
-/*
- 
- #pragma mark - Navigation
- 
- 
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- 
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- 
- {
- 
- // Get the new view controller using [segue destinationViewController].
- 
- // Pass the selected object to the new view controller.
- 
- }
- 
- */
-
 -(void)lookRemainder
 
 {
-    
     //----------------アクセス許可についてのステータスを取得する
     
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder];
-    
-    
-    
+
     //アクセス許可を求めていない場合
     
     if (status ==  EKAuthorizationStatusNotDetermined)
         
     {
-        
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
                               
                                                        message:@"ユーザーにまだアクセス許可を求めていない"
@@ -168,7 +197,6 @@
                                              otherButtonTitles:nil];
         
         [alert show];
-        
         [self showRemin];
         
     }
@@ -178,7 +206,6 @@
     else if (status == EKAuthorizationStatusRestricted)
         
     {
-        
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
                               
                                                        message:@"iPhoneの設定「機能制限」でリマインダーへアクセス制限している" delegate:nil
@@ -190,13 +217,11 @@
         [alert show];
         
     }
-    
     //---------------リマインダーへのアクセスをユーザーから拒否されてる
     
     else if (status == EKAuthorizationStatusDenied)
         
     {
-        
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
                               
                                                        message:@"リマインダーへのアクセスをユーザーから拒否されている"
@@ -210,13 +235,11 @@
         [alert show];
         
     }
-    
     //-------------リマインダーへのアクセス許可されてる
     
     else if (status ==EKAuthorizationStatusAuthorized)
         
     {
-        
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
                               
                                                        message:@"リマインダーへのアクセスをユーザが許可してる"
@@ -230,48 +253,37 @@
         [alert show];
         [self labelReminder];
  //karidome5/21       [self somethingReminder];
-        
-        
-        
+
     }
     
 }
 
-
-
 -(void)showRemin
 
 {
-    
     //アクセス許可についてのステータスを取得する
     
     EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder];
-
     
     //EKAuthorizationStatusの値に応じて処理する
     
     switch (status)
     
     {
-            
         case EKAuthorizationStatusAuthorized:       //アクセスをユーザーが許可している場合
-            
         {
             
         }
-            
             break;
             
         case EKAuthorizationStatusNotDetermined:    //まだユーザにアクセス許可のアラートを出していない状態
             
         {
-            
             // 「このアプリがリマインダーへのアクセスを求めています」といったアラートが表示される
             
             [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
              
              {
-                 
                  //                __weak id weakSelf = self;
                  
                  if (granted) {
@@ -283,9 +295,6 @@
                      dispatch_async(dispatch_get_main_queue(), ^{
                          
                          // 許可されたら、EKEntityTypeReminderへのアクセスを行う
-                         
-                         
-                         
                      });
                      
                  } else {
@@ -313,9 +322,6 @@
                  }
                  
              }];
-            
-            
-            
         }
             
             break;
@@ -323,9 +329,7 @@
         case EKAuthorizationStatusDenied:           //アクセスをユーザーから拒否されている場合
             
         case EKAuthorizationStatusRestricted:       //iPhoneの設定の「機能制限」でマインダーへのアクセスを制限している場合
-            
         {
-            
             //アラートを表示
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告"
@@ -341,7 +345,6 @@
             [alert show];
             
         }
-            
             break;
             
         default:
@@ -349,7 +352,6 @@
             break;
             
     }
-  
 }
 
 //リマインダー操作
@@ -530,6 +532,9 @@
         
         NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
         
+        NSDate *start = [NSDate date];
+         
+        
         [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
          
          {
@@ -543,16 +548,14 @@
                  NSLog(@"title=%@", e.title);
                  
                  NSLog(@"sample=%@", e.dueDateComponents);
+                
+                 NSLog(@"*****alam=%@",e.alarms);
                  
-                 
-                 
-                 NSLog(@"title=%@", e.title);
-                 
-                 NSLog(@"sample=%@", e.dueDateComponents);
-                 
-                 // NSLog(@"%@",e.location);
+                  NSLog(@"%@",e.location);
                  
                  NSLog(@"%@",e.notes);
+                 
+                 NSLog(@"::::time=%@",e.timeZone);
                  
                  
                  
@@ -591,21 +594,15 @@
                  //_notoLabel 5/21
                  __notoLabel.text = [NSString stringWithFormat:@" \n %@\n",noto];
                  
-                 
-                 
-                 
-                 
-                 
-                 
-
-                 
                 NSLog(@"noto=%@",noto);
  
+                 EKEventStore *eventStore = [[EKEventStore alloc] init];
+                 NSArray *lists = [eventStore calendarsForEntityType:EKEntityTypeReminder];
+                 EKCalendar *sampleList = [lists firstObject];
+                 
+                 NSLog(@"kokokokoko%@",sampleList);
                  
   //           UITableViewCell *cell = [UITableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:NSIndexPath];
-                 
-              
-                 
                  
               //   [self.view addSubview:label];
                  [self.view addSubview:__titleLabel];
@@ -632,7 +629,5 @@
  
     }
 }
-
-
 
 @end

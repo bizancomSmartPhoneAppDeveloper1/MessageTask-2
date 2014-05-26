@@ -13,7 +13,7 @@
 
 
 
-@interface ReminderViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ReminderViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,EKEventEditViewDelegate>
 {
     NSArray *data1;
     NSArray *data2;
@@ -32,7 +32,7 @@
 - (IBAction)newButton:(UIButton *)sender;
 - (IBAction)gobackButton:(UIButton *)sender;
 
-
+-(IBAction)rimainder:(id)sender;
 
 @end
 
