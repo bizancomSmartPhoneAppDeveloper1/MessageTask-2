@@ -227,7 +227,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A193CF1926FBF9000A7124 /* sphoneicon */ = {
+		18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */ = {
 			isa = PBXGroup;
 			children = (
 				18A193D01926FBF9000A7124 /* 2914.png */,
@@ -235,14 +235,13 @@
 				18A193D21926FBF9000A7124 /* s00229.png */,
 				18A193D31926FBF9000A7124 /* suma8.png */,
 				18A193D41926FBF9000A7124 /* suma8かり.png */,
-				18A193D51926FBF9000A7124 /* layout */,
-				18A193DF1926FBF9000A7124 /* prettyetc */,
+				18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */,
+				18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */,
 			);
-			name = sphoneicon;
 			path = "スマートフォンアイコン詰め";
 			sourceTree = "<group>";
 		};
-		18A193D51926FBF9000A7124 /* layout */ = {
+		18A193D51926FBF9000A7124 /* Taskshotデザインまとめ */ = {
 			isa = PBXGroup;
 			children = (
 				18A193D61926FBF9000A7124 /* adverties-button.png */,
@@ -257,11 +256,10 @@
 				18A193DD1926FBF9000A7124 /* sousin-button.png */,
 				18A193DE1926FBF9000A7124 /* tsmain.png */,
 			);
-			name = layout;
 			path = "Taskshotデザインまとめ";
 			sourceTree = "<group>";
 		};
-		18A193DF1926FBF9000A7124 /* prettyetc */ = {
+		18A193DF1926FBF9000A7124 /* きれいなアイコンその他 */ = {
 			isa = PBXGroup;
 			children = (
 				18A193E01926FBF9000A7124 /* actions_dialog-ok-2_256x256.png */,
@@ -287,7 +285,6 @@
 				18A193F41926FBF9000A7124 /* C00225-002N.jpg */,
 				18A193F51926FBF9000A7124 /* earth_icon */,
 			);
-			name = prettyetc;
 			path = "きれいなアイコンその他";
 			sourceTree = "<group>";
 		};
@@ -352,7 +349,7 @@
 				189CD8C6192E0E2E007662B1 /* transmissionViewController.h */,
 				189CD8C7192E0E2E007662B1 /* transmissionViewController.m */,
 				DD01BE11191B1D9100761848 /* Images.xcassets */,
-				18A193CF1926FBF9000A7124 /* sphoneicon */,
+				18A193CF1926FBF9000A7124 /* スマートフォンアイコン詰め */,
 				DD01BE00191B1D9100761848 /* Supporting Files */,
 			);
 			path = MessageTask;
