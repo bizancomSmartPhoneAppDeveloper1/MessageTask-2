@@ -528,6 +528,9 @@
         
         NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
         
+        NSDate *start = [NSDate date];
+         
+        
         [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
          
          {

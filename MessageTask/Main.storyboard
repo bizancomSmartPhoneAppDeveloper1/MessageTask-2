@@ -98,9 +98,6 @@
                                 <state key="normal" title="更新">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="newButton:" destination="o3D-T7-OeT" eventType="touchUpInside" id="7P4-ED-5ec"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-a0-Hmz">
                                 <rect key="frame" x="267" y="450" width="46" height="30"/>
