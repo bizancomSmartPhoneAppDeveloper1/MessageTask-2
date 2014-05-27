@@ -7,12 +7,14 @@
 //
 #import <UIKit/UIKit.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
+#import "AppDelegate.h"
 
-@interface ViewController : UIViewController < MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate,NSStreamDelegate,MCAdvertiserAssistantDelegate,MCBrowserViewControllerDelegate >
+@interface ViewController : UIViewController < MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, NSStreamDelegate,MCBrowserViewControllerDelegate >
 {
     MCPeerID *myPeerID;
     NSString *serviceType;
     NSTimer *time;
+    MCSession *session;
 }
 
 @property (strong, nonatomic) MCPeerID *myPeerID;
@@ -33,6 +35,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *myself;
 @property (weak, nonatomic) IBOutlet UILabel *companion;
+@property (weak, nonatomic) IBOutlet UILabel *companion1;
+@property (weak, nonatomic) IBOutlet UILabel *companion2;
+@property (weak, nonatomic) IBOutlet UILabel *companion3;
 
 
 
@@ -45,7 +50,7 @@
 
 
 
-
+/*
 
 - (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error;
 
@@ -79,6 +84,6 @@
 
 
 - (BOOL)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler;
-
+*/
 
 @end

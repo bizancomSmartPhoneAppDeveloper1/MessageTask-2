@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 mycompany. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @import MultipeerConnectivity;
 
