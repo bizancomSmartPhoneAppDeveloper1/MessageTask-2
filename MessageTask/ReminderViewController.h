@@ -17,22 +17,23 @@
 {
     NSArray *data1;
     NSArray *data2;
+    UILabel *myLabel;
+    EKEventStore *event;
+    EKCalendar *calendar;    
+    UIView *view;
+
 }
 
-
-@property (nonatomic,strong)EKReminder *rimainder;
-@property (retain,nonatomic)NSMutableArray *item;
+@property NSMutableArray *item;
 
 @property (weak, nonatomic) IBOutlet UILabel *_titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *_notoLabel;
-
-
+@property (weak, nonatomic) IBOutlet UITableView *reminderTableView;
 
 
 - (IBAction)newButton:(UIButton *)sender;
 - (IBAction)gobackButton:(UIButton *)sender;
 
--(IBAction)rimainder:(id)sender;
 
 @end
 

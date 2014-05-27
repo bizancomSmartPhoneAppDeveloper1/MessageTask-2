@@ -12,23 +12,45 @@
 
 @interface ReminderViewController ()
 
-{
-    UILabel *myLabel;
-    
-    EKEventStore *event;
-    
-    EKCalendar *calendar;
-    
-    UIView *view;
-}
+
 
 @end
 
 @implementation ReminderViewController
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
+
+{
+    [super viewDidLoad];
+    
+    //----------------------初期化
+
+    event = [[EKEventStore alloc]init];
+    
+    //手直し必要！！！！！！！！！！！！
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:2013];
+    [dateComponents setMonth:12];
+    [dateComponents setDay:18];
+    [dateComponents setHour:20];
+    
+    [self saveToRemider:@"test Title" saveTextNote:@"test本文の入力１" startDate:dateComponents dueDate:dateComponents];
+}
+
+//先読み
+-(void)viewWillAppear:(BOOL)animated
 {
     [self lookRemainder];
+    
+    [super viewWillAppear:animated];
+    
+    [self updateVisibleCells];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [_reminderTableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -38,7 +60,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"test");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:indexPath];
 
 //配列に入れたものを１行１行の書き出し・タイトル・メモ
@@ -53,8 +74,7 @@
          
     label = (UILabel *)[cell viewWithTag:2];
     label.text = [NSString stringWithFormat:@"%@",noto];
-         
-    NSLog(@"noto=%@",noto);
+
     //セルにかえす
      return cell;
 }
@@ -64,7 +84,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
 {
-    
+
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
@@ -83,67 +103,6 @@
     return NO;
 }
 
-- (void)viewDidLoad
-
-{
-    [super viewDidLoad];
-    
-    //----------------------初期化
-    
-    event = [[EKEventStore alloc]init];
-    
-    _item = [NSMutableArray array];
-    
-    NSDate *startDate = [NSDate distantPast];
-    
-    NSDate *endDate   = [NSDate distantFuture];
-    
-    NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
-    
-    [self saveToRemider:@"test Title" saveTextNote:@"test本文の入力１"];
-    
-    //追加----------------
-    EKReminder *new_reminder = [EKReminder reminderWithEventStore:event];
-    new_reminder.title = @"牛乳を買ってかえる";
-    new_reminder.calendar = calendar;
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    [dateComponents setYear:2013];
-    [dateComponents setMonth:12];
-    [dateComponents setDay:18];
-    [dateComponents setHour:20];
-    new_reminder.dueDateComponents = dateComponents;
-    
-    //開始時間、期限にぶち込む
-    [new_reminder setStartDateComponents:dateComponents];
-    [new_reminder setDueDateComponents:dateComponents];
-    
-    
-    //Alarmを設定する。これをしていないと通知がこない。
-    NSDate *alarmDate = [calendar dateFromComponents:dateComponents];
-    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
-    [new_reminder addAlarm:alarm];
-
-    //通知----------
-    [new_reminder addAlarm:[EKAlarm alarmWithAbsoluteDate:[[NSCalendar currentCalendar] dateFromComponents:dateComponents]]];
-    
-    NSError *error;
-    if(![event saveReminder:new_reminder commit:YES error:&error]) NSLog(@"%@", error);
-
-    
-    
-    //取り出し-----------------------
-    [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
-     {
-         _item = [reminders mutableCopy];
-     }];
-    
-    NSLog(@"item_data = %@",_item);
-}
-
-
 - (void)didReceiveMemoryWarning
 
 {
@@ -153,29 +112,45 @@
     // Dispose of any resources that can be recreated.
     
 }
--(void)saveToRemider:(NSString *)title saveTextNote:(NSString *)note {
+
+//ここの中身をチエックした方が良い*******
+-(void)saveToRemider:(NSString *)title saveTextNote:(NSString *)note startDate:(NSDateComponents *)startDate dueDate:(NSDateComponents *)dueDate {
     //イベントストアに接続ーーーーーリマインダーへ登録
+    
+    EKReminder *post = [EKReminder reminderWithEventStore:event];
+    
     [event requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
-     {calendar = [event defaultCalendarForNewReminders];
+     {
+         calendar = [event defaultCalendarForNewReminders];
          
-         EKReminder *post = [EKReminder reminderWithEventStore:event];
+         
          post.title = title;
          
          post.notes = note;
          
          post.calendar = [event defaultCalendarForNewReminders];
          
-         BOOL success = [event saveReminder:post commit:YES error:&error];
-         if (!success)
-         {//投稿失敗
-             NSLog(@"%@",[error description]);
-         }
+
      }];
+    
+    //開始時間、期限にぶち込む
+    [post setStartDateComponents: startDate];
+    [post setDueDateComponents:dueDate];
+    
+    NSCalendar *newCalendar = [NSCalendar currentCalendar];
+    
+    //Alarmを設定する。これをしていないと通知がこない。
+    NSDate *alarmDate = [newCalendar dateFromComponents:startDate];
+    EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:alarmDate];
+    [post addAlarm:alarm];
+    
+//    NSError *error;
+//    if(![event saveReminder:post commit:YES error:&error])
+//        NSLog(@"%@", error);
 }
 
 
 -(void)lookRemainder
-
 {
     //----------------アクセス許可についてのステータスを取得する
     
@@ -183,7 +158,7 @@
 
     //アクセス許可を求めていない場合
     
-    if (status ==  EKAuthorizationStatusNotDetermined)
+    if (status == EKAuthorizationStatusNotDetermined)
         
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
@@ -220,7 +195,6 @@
     //---------------リマインダーへのアクセスをユーザーから拒否されてる
     
     else if (status == EKAuthorizationStatusDenied)
-        
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
                               
@@ -237,25 +211,36 @@
     }
     //-------------リマインダーへのアクセス許可されてる
     
-    else if (status ==EKAuthorizationStatusAuthorized)
-        
+    else if (status == EKAuthorizationStatusAuthorized)
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"プライパシー状態"
-                              
-                                                       message:@"リマインダーへのアクセスをユーザが許可してる"
-                              
-                                                      delegate:nil
-                              
-                                             cancelButtonTitle:@"OK"
-                              
-                                             otherButtonTitles:nil];
+        //Mutable配列初期化
+        _item = [NSMutableArray new];
         
-        [alert show];
-        [self labelReminder];
- //karidome5/21       [self somethingReminder];
+        NSDate *startDate = [NSDate distantPast];
+        
+        NSDate *endDate   = [NSDate distantFuture];
+        
+        NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
+        
+        //手直し必要！！！！！！！！！！！！
+  
+        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+        [dateComponents setYear:2013];
+        [dateComponents setMonth:12];
+        [dateComponents setDay:18];
+        [dateComponents setHour:20];
+  
+        
+        
+        //取り出し-----------------------
+        [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
+         {
+             _item = [reminders mutableCopy];
+         }];
+        
+        [self saveToRemider:@"test Title" saveTextNote:@"test本文の入力１" startDate:dateComponents dueDate:dateComponents];
 
     }
-    
 }
 
 -(void)showRemin
@@ -351,6 +336,31 @@
             
             break;
             
+    }
+}
+
+//テーブルビューの表示更新
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Update Cells
+}
+- (UITableViewCell *)reminderTableView:(UITableView *)reminderTableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [reminderTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    // Update Cell
+    [self updateCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+#pragma mark - Cell Operation
+- (void)updateVisibleCells {
+    // 見えているセルの表示更新
+    for (UITableViewCell *cell in [self.reminderTableView visibleCells]){
+        [self updateCell:cell atIndexPath:[self.reminderTableView indexPathForCell:cell]];
     }
 }
 
@@ -503,7 +513,7 @@
 
 - (IBAction)newButton:(UIButton *)sender
 {
-    [self lookRemainder];
+    
 }
 
 - (IBAction)gobackButton:(UIButton *)sender
@@ -511,122 +521,124 @@
 
 }
 
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    
+}
 
 //karidome 5/21
 -(void)labelReminder
 {
-    {
-        
+//    {
+//        
 //        NSArray *lists = [event calendarsForEntityType:EKEntityTypeReminder];
-        
-        UILabel *label = [[UILabel alloc] init];
-        
-        NSDate *startDate = [NSDate distantPast];
-        
-        NSDate *endDate   = [NSDate distantFuture];
-        
-      
-        
-        
-        NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
-        
-        NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
-        
-        NSDate *start = [NSDate date];
-         
-        
-        [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
-         
-         {
-             
-             int i = 0;
-             
-             for(EKReminder *e in reminders)
-                 
-             {
-                 
-                 NSLog(@"title=%@", e.title);
-                 
-                 NSLog(@"sample=%@", e.dueDateComponents);
-                
-                 NSLog(@"*****alam=%@",e.alarms);
-                 
-                  NSLog(@"%@",e.location);
-                 
-                 NSLog(@"%@",e.notes);
-                 
-                 NSLog(@"::::time=%@",e.timeZone);
-                 
-                 
-                 
-                 NSLog(@"event: %@, %@,in %@",e.startDateComponents,e.title,e.calendar.title);
-                 
-                 
-                 
-                 NSString *titles = [NSString stringWithFormat:@"%@ \n",e.title];
-                 
-                 NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
-                   //「label（コードで作成）」から「_titleLabel（プロパティある方）」へ
-                 __titleLabel.textColor = [UIColor blackColor];
-                 
-                 __titleLabel.font = [UIFont systemFontOfSize:12];
-                 
-                 __titleLabel.numberOfLines = 0;
-                 
-                 __titleLabel.adjustsFontSizeToFitWidth = YES;
-                 
-                 //「　label2（コードで作成）　」から「　_notoLabel（プロパティある方）　」へ
-                 
-                 __notoLabel
-                 .textColor = [UIColor blackColor];
-                 
-                 __notoLabel.font = [UIFont systemFontOfSize:15];
-                 
-                 __notoLabel.numberOfLines = 0;
-                 
-                 __notoLabel.adjustsFontSizeToFitWidth = YES;
-                 
-                 
-                 //_titleLabel 5/21
-                 __titleLabel.text = [NSString stringWithFormat:@"%@\n",titles];//@"%@",titles;
-                 
-                 //_notoLabel 5/21
-                 __notoLabel.text = [NSString stringWithFormat:@" \n %@\n",noto];
-                 
-                NSLog(@"noto=%@",noto);
- 
-                 EKEventStore *eventStore = [[EKEventStore alloc] init];
-                 NSArray *lists = [eventStore calendarsForEntityType:EKEntityTypeReminder];
-                 EKCalendar *sampleList = [lists firstObject];
-                 
-                 NSLog(@"kokokokoko%@",sampleList);
-                 
-  //           UITableViewCell *cell = [UITableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:NSIndexPath];
-                 
-              //   [self.view addSubview:label];
-                 [self.view addSubview:__titleLabel];
-                 
-              //   [self.view addSubview:label2];
-                 [self.view addSubview:__notoLabel];
-                 
-                 [labels addObject:label];
-                 
-                 i++;
-                 
-             }
-             
-             EKEventViewController *datailViewController =[[EKEventViewController alloc]initWithNibName:nil bundle:nil];
-             
-             //         datailViewController.event = [event objectAtindex:0];
-             
-             [self.navigationController pushViewController:datailViewController animated:YES];
-             
-             [datailViewController reloadInputViews];
-         }];
-        
-        [self.view addSubview:label];
- 
-    }
+//        
+//        UILabel *label = [[UILabel alloc] init];
+//        
+//        NSDate *startDate = [NSDate distantPast];
+//        
+//        NSDate *endDate   = [NSDate distantFuture];
+//        
+//      
+//        
+//        
+//        NSPredicate *predicate = [event predicateForIncompleteRemindersWithDueDateStarting:startDate ending:endDate calendars:nil];
+//        
+//        NSMutableArray *labels = [[NSMutableArray alloc]init];//配列にいれている『labels』
+//        
+//        [event fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders)
+//         
+//         {
+//             
+//             int i = 0;
+//             
+//             for(EKReminder *e in reminders)
+//                 
+//             {
+//                 
+//                 NSLog(@"title=%@", e.title);
+//                 
+//                 NSLog(@"sample=%@", e.dueDateComponents);
+//                
+//                 NSLog(@"*****alam=%@",e.alarms);
+//                 
+//                  NSLog(@"%@",e.location);
+//                 
+//                 NSLog(@"%@",e.notes);
+//                 
+//                 NSLog(@"::::time=%@",e.timeZone);
+//                 
+//                 
+//                 
+//                 NSLog(@"event: %@, %@,in %@",e.startDateComponents,e.title,e.calendar.title);
+//                 
+//                 
+//                 
+//                 NSString *titles = [NSString stringWithFormat:@"%@ \n",e.title];
+//                 
+//                 NSString *noto = [NSString stringWithFormat:@"%@ \n",e.notes];
+//                   //「label（コードで作成）」から「_titleLabel（プロパティある方）」へ
+//                 __titleLabel.textColor = [UIColor blackColor];
+//                 
+//                 __titleLabel.font = [UIFont systemFontOfSize:12];
+//                 
+//                 __titleLabel.numberOfLines = 0;
+//                 
+//                 __titleLabel.adjustsFontSizeToFitWidth = YES;
+//                 
+//                 //「　label2（コードで作成）　」から「　_notoLabel（プロパティある方）　」へ
+//                 
+//                 __notoLabel
+//                 .textColor = [UIColor blackColor];
+//                 
+//                 __notoLabel.font = [UIFont systemFontOfSize:15];
+//                 
+//                 __notoLabel.numberOfLines = 0;
+//                 
+//                 __notoLabel.adjustsFontSizeToFitWidth = YES;
+//                 
+//                 
+//                 //_titleLabel 5/21
+//                 __titleLabel.text = [NSString stringWithFormat:@"%@\n",titles];//@"%@",titles;
+//                 
+//                 //_notoLabel 5/21
+//                 __notoLabel.text = [NSString stringWithFormat:@" \n %@\n",noto];
+//                 
+//                NSLog(@"noto=%@",noto);
+// 
+//                 EKEventStore *eventStore = [[EKEventStore alloc] init];
+//                 NSArray *lists = [eventStore calendarsForEntityType:EKEntityTypeReminder];
+//                 EKCalendar *sampleList = [lists firstObject];
+//                 
+//                 NSLog(@"kokokokoko%@",sampleList);
+//                 
+//  //           UITableViewCell *cell = [UITableView dequeueReusableCellWithIdentifier:@"myCell"forIndexPath:NSIndexPath];
+//                 
+//              //   [self.view addSubview:label];
+//                 [self.view addSubview:__titleLabel];
+//                 
+//              //   [self.view addSubview:label2];
+//                 [self.view addSubview:__notoLabel];
+//                 
+//                 [labels addObject:label];
+//                 
+//                 i++;
+//                 
+//             }
+//             
+//             EKEventViewController *datailViewController =[[EKEventViewController alloc]initWithNibName:nil bundle:nil];
+//             
+//             //         datailViewController.event = [event objectAtindex:0];
+//             
+//             [self.navigationController pushViewController:datailViewController animated:YES];
+//             
+//             [datailViewController reloadInputViews];
+//         }];
+//        
+//        [self.view addSubview:label];
+// 
+//    }
 }
+
+
 
 @end

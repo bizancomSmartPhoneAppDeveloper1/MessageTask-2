@@ -32,23 +32,9 @@
     [assistant start];
     self.assistant = assistant;
     
-    /*    // 万歩計を起動
-     if ([CMStepCounter isStepCountingAvailable]) {
-     NSLog(@"CMStepCounter: available");
-     CMStepCounter *stepCounter = [[CMStepCounter alloc] init];
-     [stepCounter stopStepCountingUpdates];
-     [stepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] updateOn:1 withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-     NSLog(@"step numberOfSteps:%ld %@ error:%@", (long)numberOfSteps, timestamp, error);
-     if (!error) {
-     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-     [dic setObject:[NSNumber numberWithDouble:32.0] forKey:@"size"];
-     [dic setObject:[NSString stringWithFormat:@"%ld Steps.", (long)numberOfSteps] forKey:@"message"];
-     [self.stepDelegate sendDictionary:dic];
-     }
-     }];
-     }
-     */
     return YES;
+    
+    
 }
 
 //// 非アクティブ化
